@@ -1,0 +1,22 @@
+a{
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+span,li{
+    margin-left: 10px;
+    font-size: small;
+}
+app-nav-bar{
+    position:fixed;
+    width: 100%;
+    z-index: 100; /* Specify a z-index to control stacking order */
+    /* Other styles as needed */
+  }
+  app-footer{
+    margin-top: 18vh;
+  }
+
+  .containerROP{
+    margin-top:14vh;
+  }

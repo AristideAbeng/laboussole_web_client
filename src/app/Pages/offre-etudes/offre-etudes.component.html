@@ -1,0 +1,155 @@
+<div class="menuPage" *ngIf="isMenuIconClicked">
+  <app-nav-mobile-page (menuIconClicked)="toggleMenu()"></app-nav-mobile-page>
+</div>
+<div class="restOfPage" *ngIf="isMenuIconClosed">
+  <app-nav-mobile-header
+    (menuIconClosed)="toggleMenu()"
+  ></app-nav-mobile-header>
+
+  <!-- formation container starts here -->
+  <div class="container">
+    <div class="search-formation">
+      <div class="search-bar">
+        <span>
+          <img src="../../../assets/search.svg" alt="" />
+        </span>
+        <input type="text" placeholder="Search..." />
+      </div>
+      <div
+        class="search-menu"
+        [ngClass]="{ 'small-screen-menu': getScreenWidth <= 600 }"
+      >
+        <div>
+          <button mat-button [matMenuTriggerFor]="menu">
+            Marketing &nbsp; <img src="../../../assets/arrow-down.svg" alt="" />
+          </button>
+          <mat-menu #menu="matMenu" yPosition="below">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+          </mat-menu>
+        </div>
+        <div>
+          <button mat-button [matMenuTriggerFor]="menu">
+            Economie &nbsp; <img src="../../../assets/arrow-down.svg" alt="" />
+          </button>
+          <mat-menu #menu="matMenu" yPosition="below">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+          </mat-menu>
+        </div>
+        <div>
+          <button mat-button [matMenuTriggerFor]="menu">
+            Mathématique &nbsp;
+            <img src="../../../assets/arrow-down.svg" alt="" />
+          </button>
+          <mat-menu #menu="matMenu" yPosition="below">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+          </mat-menu>
+        </div>
+        <div>
+          <button mat-button [matMenuTriggerFor]="menu">
+            Sociologie &nbsp;
+            <img src="../../../assets/arrow-down.svg" alt="" />
+          </button>
+          <mat-menu #menu="matMenu" yPosition="below">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+          </mat-menu>
+        </div>
+        <div>
+          <button mat-button [matMenuTriggerFor]="menu">
+            Géographie &nbsp;
+            <img src="../../../assets/arrow-down.svg" alt="" />
+          </button>
+          <mat-menu #menu="matMenu" yPosition="below">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+          </mat-menu>
+        </div>
+        <div class="large-screen-menu" *ngIf="getScreenWidth >= 992">
+          <button mat-button [matMenuTriggerFor]="menu">
+            Droit &nbsp;
+            <img src="../../../assets/arrow-down.svg" alt="" />
+          </button>
+          <mat-menu #menu="matMenu" yPosition="below">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+    <div class="menu-icon">
+      <button *ngIf="getScreenWidth <= 600" mat-button>
+        <img src="../../../assets/menu.svg" alt="" />
+      </button>
+      <div class="side-bar" onclick="">
+        <div>
+          <button mat-button [matMenuTriggerFor]="menu">
+            Marketing &nbsp; <img src="../../../assets/arrow-down.svg" alt="" />
+          </button>
+          <mat-menu #menu="matMenu" yPosition="below">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+          </mat-menu>
+        </div>
+        <div>
+          <button mat-button [matMenuTriggerFor]="menu">
+            Economie &nbsp; <img src="../../../assets/arrow-down.svg" alt="" />
+          </button>
+          <mat-menu #menu="matMenu" yPosition="below">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+          </mat-menu>
+        </div>
+        <div>
+          <button mat-button [matMenuTriggerFor]="menu">
+            Mathématique &nbsp;
+            <img src="../../../assets/arrow-down.svg" alt="" />
+          </button>
+          <mat-menu #menu="matMenu" yPosition="below">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+          </mat-menu>
+        </div>
+        <div>
+          <button mat-button [matMenuTriggerFor]="menu">
+            Sociologie &nbsp;
+            <img src="../../../assets/arrow-down.svg" alt="" />
+          </button>
+          <mat-menu #menu="matMenu" yPosition="below">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+    <div class="formation-content">
+      <div class="recommendations-text">
+        <h2>Recommandations</h2>
+        <a href="" class="all">Voir tout</a>
+      </div>
+      <div class="recommendations">
+        <div *ngFor="let formation of formations; index as i">
+          <app-offre-formation-box
+            routerLink="../detail-bourses-etudes"
+            *ngIf="i <= 4"
+            formationBox]="formation"
+          ></app-offre-formation-box>
+        </div>
+      </div>
+      <div class="recommendations-text">
+        <h2>Bouses Actuelles</h2>
+      </div>
+      <div class="recommendations">
+        <div *ngFor="let formation of formations; index as i">
+          <app-offre-formation-box
+            *ngIf="i <= 2"
+            [metierBox]="formation"
+          ></app-offre-formation-box>
+        </div>
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="leftblock"></div>
+    <div class="loginForm">
+        <div class="welcomeText">Compte Admin</div>
+        <div class="emailInput">
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput >
+              </mat-form-field>
+        </div>
+        <div class="passwordInput">
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput  [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+        </div>
+        <div class="options">
+            <div class="rememberMe"> <input type="checkbox" name="" id=""> Remember me</div>
+            <div class="forgotPass" routerLink="/motDePasseOublie"> ForgotPassword?</div>
+        </div>
+        <div class="centerContainer">
+            <div class="btnContinue" (click)="notifyLoginResult(1)">Continue</div>
+            <div class="text">  <hr> Or <hr> </div>
+            <div class="googleLogin"> Login With Google</div>
+        </div>
+        
+    </div>
+    
+</div>

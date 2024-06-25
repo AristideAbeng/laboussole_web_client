@@ -1,0 +1,44 @@
+
+<div class="container">
+    <div class="iconsList">
+      <div [matMenuTriggerFor]="profileMenu">
+        <img *ngIf="picture==''" src="../../assets/profile-svgrepo-com.svg" alt="" width="30px" height="30px">
+
+      <img *ngIf="picture" [src]="picture" alt="" width="30px" height="30px" style="border-radius: 50%;">
+        Hi, {{(username.trim()).split(' ')[0]}}
+      </div>
+      
+      
+
+       
+        <div class="menuIcon" style="justify-self: flex-end;" (click)="closeMenu()" ><img src="../../assets/x-close.png" alt="" style="width: 10vw; height: 10vw;"></div>
+    </div>
+    <div class="menuList">
+        <div class="menuItem" routerLink="/">Acceuil</div>
+        <div class="menuItem" (click)="showDropdown = !showDropdown">Nos Services<img src="../../assets/expand_more.svg" alt="" style="position: relative;top:8px;"></div>
+            <div class="dropdown-content" *ngIf="showDropdown">
+                <div class="dropdown-item" routerLink="/universites">Formation</div>
+                <div class="dropdown-item" routerLink="/metiers">Métiers</div>
+            </div>
+        <div class="menuItem" routerLink="/aboutus">A propos de Nous</div>
+        <div class="menuItem" routerLink="/contact">Contactez-nous</div>
+    </div>
+    <div class="buttonsList">
+        <app-custom-round-button routerLink="/login" [title]="'connexion'"></app-custom-round-button>
+        <app-custom-round-button  routerLink="/signup" class="signUpBtn" [title]="'inscription'"></app-custom-round-button>
+    </div>
+</div>
+<mat-menu #profileMenu="matMenu">
+  <button mat-menu-item routerLink="/profil/0">
+    <mat-icon>person</mat-icon>
+    <span>Profil</span>
+  </button>
+  <button mat-menu-item routerLink="/profil"> 
+    <mat-icon>help</mat-icon>
+    <span>Aide</span>
+  </button>
+  <button mat-menu-item (click)="signOut()">
+    <mat-icon>logout</mat-icon>
+    <span>Decconexion</span>
+  </button>
+</mat-menu>

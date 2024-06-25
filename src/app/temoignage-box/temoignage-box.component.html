@@ -1,0 +1,13 @@
+
+<div matRipple class="box" (click)="viewTemoignage()">
+    <div class="topImages">
+        <div class="photoIcon"> <img [src]="image_url" alt="" style=" width:70px;height:70px;"> </div>
+        <div class="starsPhoto">
+            <app-star *ngFor="let _ of counterArray; let i = index" [showFullStar]="(score - i) > 0.5" [showHalfStar]="(score - i) == 0.5"></app-star>
+        </div>
+    </div>
+    <div class="name">{{name}}</div>
+    <div class="description">{{description}}
+        </div>
+   
+</div>

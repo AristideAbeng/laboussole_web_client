@@ -1,0 +1,208 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="containerROP">
+  
+<div style="display: flex">
+  <div style="display: flex; margin: 2%; width: 30%">
+    <a routerLink="../../metiers"
+      ><img
+        src="../../assets/boutonRetour.png"
+        alt=""
+        style="width: 20px; height: 15px"
+      />
+    </a>
+    <a routerLink="../../metiers">Retour</a>
+  </div>
+  <div style="display: flex; margin: 2%">
+    <a (click)="handleClick('DescriptionMetier')"
+      >Qu'est ce qu'un {{ metierItem.nom }}?</a
+    >
+    <a (click)="handleClick('EcoleFormation')" style="margin-left: 15px"
+      >Où se former?</a
+    >
+    <a (click)="handleClick('Entreprise')" style="margin-left: 15px"
+      >Qui recherche ce profil?</a
+    >
+  </div>
+</div>
+
+<div
+  style="
+    text-align: center;
+    width: 100%;
+    height: 200px;
+    background-image: url(../../assets/computer-eng.jpeg);
+  "
+>
+  <h1 style="padding-top: 7%; font-size: xx-large; color: white">
+    {{ metierItem.nom }}
+  </h1>
+</div>
+
+<div class="conteneur">
+  <!-- side-bar -->
+
+  <div
+    class="infoscles"
+  >
+    <h2 style="text-align: center">Infos Clés</h2>
+    <br />
+<!--
+   <img
+      src="../../assets/Symbol.png"
+      alt=""
+      style="width: 15px; height: 15; margin-right: 5px"
+    />
+    <strong>Durée</strong> <br /><br />
+    <span> {{linked_filiere.duree}}ans</span><br /><br />
+
+    <img
+      src="../../assets/Symbol.png"
+      alt=""
+      style="width: 15px; height: 15; margin-right: 5px"
+    />
+    <strong>Diplome délivré</strong> <br /><br />
+    <span> {{ linked_filiere.diplome_delivre }}</span
+    ><br /><br />
+
+     <img
+      src="../../assets/Symbol.png"
+      alt=""
+      style="width: 15px; height: 15; margin-right: 5px"
+    />
+    <strong>Conditions d'admission</strong> <br /><br />
+    <span>{{linked_faculte.condition_admission}}e</span><br /><br />
+
+    <img
+      src="../../assets/Symbol.png"
+      alt=""
+      style="width: 15px; height: 15; margin-right: 5px"
+    />
+    <strong>Cout de laformation</strong> <br /><br />
+    <span>{{linked_filiere.cout}} frs/an</span><br /><br />
+
+    <img
+      src="../../assets/Symbol.png"
+      alt=""
+      style="width: 15px; height: 15; margin-right: 5px"
+    />
+    <strong>Langue d'enseignement</strong> <br /><br />
+    <span>{{linked_filiere.langue_enseignement}}</span><br /><br />
+  
+-->
+   
+
+    
+
+    <img
+      src="../../assets/Symbol.png"
+      alt=""
+      style="width: 15px; height: 15; margin-right: 5px"
+    />
+    <strong>Lieu</strong> <br />
+    <span class="lieuContainer">
+      <li *ngFor="let entry of lieu | keyvalue" (click)="goToFaculte(entry.key.faculte_id)">
+        {{entry.key.nom}} de {{entry.value.nom}}
+      </li>
+    </span
+    ><br /><br />
+
+   
+
+    <img
+      src="../../assets/Symbol.png"
+      alt=""
+      style="width: 15px; height: 15; margin-right: 5px"
+    />
+    <strong>Salaire</strong> <br /><br />
+    <span> <ol>
+      <li *ngFor="let sal of salaire">{{sal}}</li>
+    </ol> </span><br /><br />
+  </div>
+
+  <!-- main-info -->
+
+  <div class="allinfos" style="margin-left: 2%" >
+    <div id="DescriptionMetier">
+      <span></span>
+      <img
+        src="../../assets/pseudo.png"
+        alt=""
+        style="width: 15px; height: 15; margin-right: 5px"
+      />
+      <strong style="filter:blur(0px);">Qu'est ce qu'un {{ metierItem.nom }} ?</strong> <br />
+      <hr />
+      <div class="contenu" id="blurMark1"
+        >{{ metierItem.description }}
+
+        <br /><br />
+        <span style="font-weight:bold"> Compétences requises:</span> <br> <br>
+
+        <div class="compétences" id="blurMark2">
+          <li *ngFor="let competence of competences">
+            {{ competence | titlecase }}
+          </li>
+        </div>
+        <br /><br />
+        <span style="font-weight:bold"> Ses principales missions incluent:</span>
+          <br> <br>
+        <div class="missions" id="blurMark3"> 
+          
+          <li *ngFor="let mission of missions">{{ mission }}</li>
+        </div>
+        <br /><br />
+        <div class="salaire" >
+          <strong>Salaire indicatif: </strong>
+          <ol>
+            <li *ngFor="let sal of salaire">{{sal}}</li>
+          </ol>
+        </div>
+      </div>
+      <br /><br /><br />
+    </div>
+    <div id="EcoleFormation" *ngIf="!hideAll">
+      <span></span>
+      <img
+        src="../../assets/pseudo.png"
+        alt=""
+        style="width: 15px; height: 15; margin-right: 5px"
+      />
+      <strong>Où se former?</strong> <br />
+      <hr />
+      <ul class="lieuContainer">
+        <li *ngFor="let entry of lieu | keyvalue" (click)="goToFaculte(entry.key.faculte_id)">
+          {{entry.key.nom}} de {{entry.value.nom}}
+        </li>
+      </ul>
+      <br />
+    </div>
+
+    <div id="Entreprise" *ngIf="!hideAll">
+      <span></span>
+      <img
+        src="../../assets/pseudo.png"
+        alt=""
+        style="width: 15px; height: 15; margin-right: 5px"
+      />
+      <strong>Qui recherche ce profil?</strong> <br />
+      <hr />
+      <span
+        class="entreprise"
+        *ngFor="let entreprise of entreprises"
+      >
+        <br /><br />
+
+        <li>{{ entreprise }}</li>
+      </span>
+    </div>
+    
+  </div>
+</div>
+<div class="createAccount" *ngIf="hideAll" style="display: flex;width:100%;justify-content:center;align-items:center;flex-flow: column nowrap;gap: 10px;position: relative;bottom: 50px;">
+          <div><button mat-raised-button style="background-color: #0F70B7;color:white;" routerLink="/signup">Creer mon compte</button></div>
+  <div><button mat-raised-button style="background-color: #0F70B7;color:white;" routerLink="/login">Je me connecte </button></div>
+        <div style="color:#0F70B7;width: 100%;text-align: center;">Connectez vous ou Créez un compte pour lire la totalité de cet article</div> 
+</div>
+</div>
+
+<app-footer></app-footer>

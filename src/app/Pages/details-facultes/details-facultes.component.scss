@@ -1,0 +1,31 @@
+a,.a{
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+span,li{
+    margin-left: 6%;
+    font-size: small;
+}
+.label{
+    font-weight: 800;
+}
+.lieuContainer{
+    cursor: pointer;
+    color: #2DAAE1;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+app-nav-bar{
+    position:fixed;
+    width: 100%;
+    z-index: 100; /* Specify a z-index to control stacking order */
+    /* Other styles as needed */
+  }
+  app-footer{
+   margin-top: 18vh;
+  }
+
+  .containerROP{
+    margin-top: 13vh;
+  }

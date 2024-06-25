@@ -1,0 +1,28 @@
+
+.container{
+    border-radius: 10px; /* Adjust the border-radius for slightly rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+    margin:10px;
+    padding:10px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 5px;
+    width: 250px;
+}
+
+
+.picture_name{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 10px;
+    color: #0F70B7;
+    font-weight: 700;
+}
+
+.date{
+    width: 100%;
+    text-align: end;
+    color: #3C3C43;
+    margin-top: 10px;
+}

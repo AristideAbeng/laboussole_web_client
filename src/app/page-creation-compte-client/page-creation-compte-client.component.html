@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="leftMessageBox">
+        <div class="ltext1">Ma personne, nous sommes ravi de t’accueillir parmi nous...</div>
+        <div class="ltext2">Nous comprenons que choisir une orientation académique et professionnelle est une etape
+            importante de ta vie, et nous sommes là pour te guider tout au long de ce processus. </div>
+    </div>
+    <div class="loginForm">
+        <div class="welcomeText">Allons-y commençons</div>
+        <div class="loginMessage">Créer un Compte</div>
+        <div class="emailInput">
+          <mat-form-field appearance="outline">
+            <mat-label>Nom</mat-label>
+            <input matInput [(ngModel)]="nom" [formControl]="nameControl">
+          </mat-form-field>
+        </div>
+        <div class="emailInput">
+          <mat-form-field appearance="outline">
+            <mat-label>Prénom</mat-label>
+            <input matInput [(ngModel)]="prenom">
+          </mat-form-field>
+        </div>
+        <div class="emailInput">
+          <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput
+                  (keyup)="trimEmail()"
+                  [(ngModel)]="email"
+                  placeholder="pat@example.com"
+                  [formControl]="emailControl"
+                  required
+              >
+              <mat-error *ngIf="emailControl.invalid">{{errorMessage}}</mat-error>
+          </mat-form-field>
+      </div>
+      <div class="passwordInput">
+          <mat-form-field appearance="outline">
+              <mat-label>Mot de passe</mat-label>
+              <input matInput [formControl]="passwordControl"
+               [type]="hide ? 'password' : 'text'" [(ngModel)]="password">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+          </mat-form-field>
+      </div>
+        <div class="passwordInput">
+          <mat-form-field appearance="outline">
+            <mat-label>Confirmer Mot de passe</mat-label>
+            <input matInput [formControl]="confirmPasswordControl" [(ngModel)]="confirmPassword" [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <div class="options">
+            <div class="rememberMe" > <input type="checkbox"  [(ngModel)]="conditionsControl" name="" id="" > En créant un compte cela signifie que vous acceptez 
+                les <span routerLink="/conditions" style="text-decoration:underline;color:#0F70B7;cursor: pointer;" >conditions générales et la politique de  confidentialité</span></div>
+        </div>
+        <div class="centerContainer">
+          <mat-progress-spinner
+            *ngIf="showSpinner"
+            class="example-margin"
+            [color]="color"
+            [mode]="mode"
+            [value]="value">
+          </mat-progress-spinner>
+            <div   *ngIf="!showSpinner" class="btnContinue" (click)="verifierCreerCompte()">Créer</div>
+            <div class="login">tu as déja un compte? <span style="color:#0F70B7;font-weight: 900;cursor: pointer;" routerLink="/login">Connecte-toi</span> </div>
+           
+          <!--
+             <div class="text" style="width:70%;">  <hr > Or <hr> </div>
+             <div class="googleLogin"> <img src="../../assets/icons8-google.svg"  style="margin-right: 2%;"> Login With Google</div>-->          </div>
+         </div>
+</div>
+<ng-template #errorSheet>
+  <div class="sheetContent">
+    {{sheetErrorMessage}}
+     <br/><br/>
+     <button mat-raised-button (click)="closeBottomSheet()" style="background-color: red;color:white;">ok</button>
+  </div>
+  
+</ng-template>

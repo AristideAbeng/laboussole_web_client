@@ -1,0 +1,28 @@
+.container{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    height: 100vh;
+    background-color: white;
+}
+.navigation{
+    width: 20vw;
+    height: 100vh;
+    background-color: #2b2d43;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    padding-left: 20px;
+}
+
+.nav-item{
+    color: white;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.nav-image{
+    width: 24px;
+    height: 24px;
+    position: relative;
+    top: 7px;
+}

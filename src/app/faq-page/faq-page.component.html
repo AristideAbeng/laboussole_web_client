@@ -1,0 +1,10 @@
+<div class="container">
+    <app-faq-template *ngFor="let f of faq"
+    [question]="f.question"
+    [answer]="f.answer"
+    ></app-faq-template>
+</div>
+
+<h2 style="width: 90%; display:flex;flex-flow:row;justify-content:center;text-align:justify;margin-left:10px;margin-top:20px;">Nous nous efforçons de vous offrir la meilleure expérience possible avec notre
+    application. Si vous rencontrez des problèmes, n'hésitez pas à contacter notre équipe
+    d'assistance. Nous sommes là pour vous aider.</h2>

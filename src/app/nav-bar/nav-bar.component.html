@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="menuPage" *ngIf="isMenuIconClicked">
+        <app-nav-mobile-page *ngIf="!isLoggedIn" (menuIconClicked)="toggleMenu()"></app-nav-mobile-page>
+        <app-logged-in-nav-page *ngIf="isLoggedIn" (menuIconClicked)="toggleMenu()"></app-logged-in-nav-page>
+    </div>
+    <div class="restOfPage" *ngIf="isMenuIconClosed">
+        <app-nav-mobile-header *ngIf="!isLoggedIn" (menuIconClosed)="toggleMenu()"></app-nav-mobile-header>
+        <app-logged-in-nav-header *ngIf="isLoggedIn" (menuIconClosed)="toggleMenu()" (loggedOut)="reloadComponent()"></app-logged-in-nav-header>
+    </div>
+</div>
+

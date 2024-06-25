@@ -1,0 +1,150 @@
+.temoignagesSlider{
+    cursor: pointer;
+    display:flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+.titleBlock{
+    height: fit-content;
+    width: 100%;
+    background-color: #EEF8FC;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    padding-left: 40px;
+    padding-right: 20px;
+    color: #213343;
+    margin-bottom: 40px;
+    
+}
+.text1,.title1{
+    width: 90%;
+}
+
+.title1{
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+.text2{
+    color: #213343;
+    font-weight: 700;
+    margin-bottom: 3px;
+    text-align: center;
+}
+
+.blocks{
+    text-align: justify;
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-areas: ". block2 ."
+                         ". block1 ."
+                         ". block4 ."
+                         ". block3 .";
+    
+}
+
+.block1{
+    grid-area: block1;
+    justify-self: center; /* Center horizontally */
+    margin-bottom: 30px;
+}
+.block2{
+    grid-area: block2;
+    justify-self: center; /* Center horizontally */
+    margin-bottom: 10px;
+    align-self: center;
+}
+.block3{
+    grid-area: block3;
+    justify-self: center; /* Center horizontally */
+    margin-bottom: 30px;
+}
+.block4{
+    grid-area: block4;
+    justify-self: center; /* Center horizontally */
+    margin-bottom: 10px;
+    align-self: center;
+}
+
+img{
+    width: 90%;
+    height: 90%;
+    object-fit: cover; 
+    object-position: center;
+}
+
+.title{
+    color: #213343;
+    font-weight: 800;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+.presentationEquipe{
+    background-color: #EEF8FC;
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    padding: 10px;
+    justify-content: center;
+    text-align: justify;
+    align-items: center;
+}
+.textProfil{
+    width: 70%;
+}
+.profil{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.caroussel-profils{
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width:1024px) {
+    .blocks{
+        text-align: justify;
+        display: grid;
+        grid-template-columns: 1fr 4fr 4fr 1fr;
+        grid-template-areas: ". block2 block1 ."
+                             ". block4 block3 .";
+        
+    }
+
+    .presentationEquipe{
+        background-color: #EEF8FC;
+        display: flex;
+        flex-flow: row nowrap;
+        padding: 10px;
+        text-align: justify;
+    }
+
+    .textProfil{
+        width: 50%;
+    }
+    .profil{
+        width: 50%;
+    }
+}
+app-nav-bar{
+    position:fixed;
+    width: 100%;
+    z-index: 100; /* Specify a z-index to control stacking order */
+    /* Other styles as needed */
+  }
+  app-footer{
+    margin-top: 18vh;
+  }
+  .contentROP{
+   margin-top: 16vh;
+  }
+  .temoignageBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+

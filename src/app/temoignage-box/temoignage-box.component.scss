@@ -1,0 +1,45 @@
+.box {
+    width: 250px;
+    height: 250px;
+    background-color: white; /* Blue color, you can change this */
+    border-radius: 10px; /* Adjust the border-radius for slightly rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+    margin: 20px;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 20px;
+    padding-left: 20px;
+   text-align: start;
+    color: black;
+  }
+  .topImages{
+    display: flex;
+    flex-flow: row nowrap;
+    margin-bottom: 25px;
+  }
+  .starsPhoto{
+    margin-left: auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+
+  }
+  .name{
+    margin-bottom: 25px;
+    font-weight: 900;
+    font-size: 0.8rem;
+    color: #133240;
+  }
+  .description{
+    font-weight: 600;
+    font-size: 0.7rem;
+    overflow: hidden;
+    color: #133240;
+  }
+
+@media screen and (max-width:400px) {
+  .box {
+    width: 200px;
+    height: 200px;
+  }
+}

@@ -1,0 +1,27 @@
+.container{
+    display: flex;
+    flex-flow: row nowrap;
+    width: 80vw;
+    height: 80vh;
+    
+}
+.navigation{
+   width: 20vw;
+   margin-left: 20px;
+}
+
+.content{
+    padding-left: 30px;
+    border-left: 2px solid gray;
+}
+.nav-item{
+    margin-bottom: 20px;
+    cursor: pointer;
+    color: indigo;
+}
+.nav-image{
+    width: 24px;
+    height: 24px;
+    position: relative;
+    top: 7px;
+}

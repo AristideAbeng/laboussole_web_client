@@ -1,0 +1,39 @@
+div.container{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: start;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 5vh;
+    position: relative;
+    top:12vh;
+}
+article{
+    width: 100%;
+    padding: 10px;
+    line-height: 1.5;
+}
+li{
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+h1{
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+h2{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+app-nav-bar{
+    position:fixed;
+    width: 100%;
+    z-index: 100; /* Specify a z-index to control stacking order */
+    /* Other styles as needed */
+}
+app-footer{
+    position: relative;
+    top:18vh;
+}

@@ -1,0 +1,22 @@
+     
+<div class="container">
+    <div class="iconsList">
+        <div class="searchBar" *ngIf="showSearchBar"> <input type="text" name="" id="" class="searchBar"> </div>
+        <div class="searchIcon" (click)="showSearchBar = !showSearchBar"><img src="../../assets/search-lg.png" alt="" style="width: 10vw; height: 10vw;"></div>
+        <div class="menuIcon" (click)="closeMenu()" style="justify-self: flex-end;" ><img src="../../assets/x-close.png" alt="" style="width: 10vw; height: 10vw;"></div>
+    </div>
+    <div class="menuList">
+        <div class="menuItem" routerLink="/">Acceuil</div>
+        <div class="menuItem" (click)="showDropdown = !showDropdown">Nos Services <img src="../../assets/expand_more.svg" alt="" style="position: relative;top:8px;"></div>
+            <div class="dropdown-content" *ngIf="showDropdown">
+                <div class="dropdown-item" routerLink="/universites">Formation</div>
+                <div class="dropdown-item" routerLink="/metiers">Métiers</div>
+            </div>
+        <div class="menuItem" routerLink="/aboutus">A propos de Nous</div>
+        <div class="menuItem" routerLink="/contact">Contactez-nous</div>
+    </div>
+    <div class="buttonsList">
+        <app-custom-round-button routerLink="/login" [title]="'inscription'"></app-custom-round-button>
+        <app-custom-round-button  routerLink="/signup" class="signUpBtn" [title]="'Connexion'"></app-custom-round-button>
+    </div>
+</div>

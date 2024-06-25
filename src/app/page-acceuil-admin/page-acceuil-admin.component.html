@@ -1,0 +1,8 @@
+<div class="container">
+    <div class="loginAdmin" *ngIf="showLoginPage">
+        <app-connexion-admin (loginResult)="receiveLoginResult($event)"></app-connexion-admin>
+    </div>
+    <div class="acceuilAdmin" *ngIf="showAdminHomePage">
+        <app-page-admin></app-page-admin>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+<div class="container">
+    <div class="leftMessageBox">
+        <div class="ltext1">Pas de panique</div>
+    </div>
+    <div class="stepOne" *ngIf="step1">
+
+        <div class="loginForm">
+            
+            <div class="loginMessage">Veuillez entrer votre e-mail</div>
+            <div class="emailInput">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput [(ngModel)]="email">
+                  </mat-form-field>
+            </div>
+           
+           
+            <div class="centerContainer">
+                <div class="btnContinue" (click)="changeStep(2)">Continue</div>
+               
+                <div class="googleLogin" routerLink="/login"> retour</div>
+                <div class="Signup">Pas de compte? <span style="color:#0F70B7;font-weight: 900;" routerLink="/signup">SIGNUP HERE</span> </div>
+            </div>
+            
+        </div>
+
+    </div>
+    <div class="stepTwo" *ngIf="step2">
+        <div class="confirmationText">
+            <div class="title">Verifiez votre e-mail</div>
+            <div>Nous vous avons envoyé un mail pour consulter votre code de récuperation.</div>
+
+            <div class="retry"> Je n'ai pas recu de mail? <span style="color:#0F70B7;" (click)="changeStep(1)">Renvoyer</span> </div>
+            <div class="next" (click)="changeStep(3)"> Suivant </div>
+        </div>
+    </div>
+    <div class="stepThree" *ngIf="step3">
+        <div class="loginForm">
+            <div class="welcomeText">Creer un nouveau mot de pass</div>
+    
+            <div class="emailInput2">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput [(ngModel)]="email" >
+                  </mat-form-field>
+            </div>
+            <div class="passwordInput" >
+                <mat-form-field appearance="outline">
+                    <mat-label>Code de récuperation</mat-label>
+                    <input matInput  [type]="hide ? 'password' : 'text'" [(ngModel)]="code">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                  </mat-form-field>
+            </div>
+            <div class="passwordInput" >
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput  [type]="hide ? 'password' : 'text'" [(ngModel)]="nouveau_pass">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                  </mat-form-field>
+            </div>
+            <div class="passwordInput" >
+                <mat-form-field appearance="outline">
+                    <mat-label>Confirmer mot de pass</mat-label>
+                    <input matInput  [type]="hide ? 'password' : 'text'" [(ngModel)]="conf_nouveau_pass">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                  </mat-form-field>
+            </div>
+           
+            <div class="centerContainer">
+                <div class="btnContinue" (click)="verifyLogin()">Continue</div>
+               
+                <div class="googleLogin" (click)="changeStep(1)"> retour</div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="stepSuccess" *ngIf="successMessage">
+            <img src="../../assets/success-icon.png" alt="">
+            <div style="color:green;"> Félicitations!</div>
+            <div>Votre mot de passe a été changé avec succès.</div>
+            <div class="googleLogin" routerLink="/login"> retour</div>
+    </div>
+    <div class="errorMessage" *ngIf="errorMessage">
+        <img src="../../assets/error-icon.png" alt="">
+        <div> Error</div>
+        <div> Des problemes sont survenus lors de cette action veuillez reessayer</div>
+
+        <button mat-button color="warn" (click)="changeStep(1)">reessayer</button>
+    </div>
+    
+</div>
+<ng-template #errorSheet>
+    <div class="sheetContent">
+      {{sheetErrorMessage}}
+       <br/><br/>
+       <button mat-raised-button (click)="closeBottomSheet()" style="background-color: red;color:white;">ok</button>
+    </div>
+    
+  </ng-template>

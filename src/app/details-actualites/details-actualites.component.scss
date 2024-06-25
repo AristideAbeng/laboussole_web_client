@@ -1,0 +1,59 @@
+.img{
+display: flex;
+flex-flow: row-reverse;
+justify-content: center;
+align-items: flex-start;
+width: 100%;
+height: 30vh;
+}
+.img img{
+width: 80%;
+height: 80%;
+object-fit: cover; 
+object-position: center;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap:10px;
+    margin-bottom:100px;
+    margin-top: 18vh;
+
+}
+.titre{
+    margin-top: 30px;
+    font-weight: 900;
+    font-size: 1.2rem;
+    text-align: center;
+    width: 100%;
+}
+.date{
+    color: gray;
+}
+.domaine{
+    color:#027A48;;
+}
+.contenu{
+    width: 80%;
+    word-spacing: 10%;
+    text-align: justify;
+    line-height: 1.5;
+}
+.nom{
+    align-self: end;
+    margin-right: 30%;
+    color: gray;
+    font-style: italic;
+}
+app-nav-bar{
+    position:fixed;
+    width: 100%;
+    z-index: 100; /* Specify a z-index to control stacking order */
+    /* Other styles as needed */
+}
+app-footer{
+   margin-top: 18vh;
+}

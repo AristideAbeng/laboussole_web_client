@@ -1,0 +1,390 @@
+@media screen and (max-width:600px) {
+    .leftMessageBox{
+        display: none;
+    }
+    .container{
+        display: flex;
+        flex-flow: column nowrap;
+        background-color: #0F70B7;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top:20vh;
+        padding-bottom: 10px;
+        height: max-content;
+       
+       
+    }
+    
+    .loginForm{
+        background-color: white;
+        height: 80vh;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+    
+    }
+    
+    .welcomeText{
+        margin-top:20px;
+        margin-left:20px;
+        margin-bottom: 10px;
+    }
+    .loginMessage{
+        font-size: 20px;
+        font-weight: 800;
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+    .emailInput{
+        margin-left: 20px;
+     
+    }
+    .passwordInput{
+        margin-left:20px;
+    }
+    
+    /* Customize the highlight color for focused input fields */
+    .custom-input:focus {
+        border-color: #007bff; /* Change this color to your desired highlight color */
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      }
+    
+    .options{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        margin-left:20px;
+        margin-right: 20px;
+    }
+    
+    .btnContinue{
+        width: 80vw;
+        height: 50px;
+        border-radius: 10px;
+        background-color: #0F70B7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color:white;
+    
+    }
+    .googleLogin{
+        width: 80vw;
+        height: 50px;
+        border-radius: 10px;
+        color: gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        border: solid 1px gray;
+    }
+    .centerContainer{
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        margin-top: 20px;
+        height: 35vh;
+        
+    }
+    
+    .text{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+    hr{
+        width: 30vw;
+    }
+    
+    .Signup{
+       margin-top: auto;
+    }
+
+    mat-form-field{
+        width: 80vw;
+        
+    }
+}
+
+@media screen and (min-width:601px) and (max-width:700px) {
+    mat-form-field{
+        width: 43vw;
+    }
+    .leftMessageBox{
+        display: none;
+    }
+}
+@media screen and (min-width:701px) and (max-width:800px) {
+    mat-form-field{
+        width: 53vw;
+    }
+    .leftMessageBox{
+        display: none;
+    }
+}
+@media screen and (min-width:801px) and (max-width:900px) {
+    mat-form-field{
+        width: 60vw;
+    }
+    .leftMessageBox{
+        display: none;
+    }
+}
+@media screen and (min-width:901px) {
+    mat-form-field{
+        width: 40vw;
+    }
+    .ltext1{
+        font-size: 28px;
+        font-weight: 900;
+        margin-bottom: 30px;
+        width: 80%;
+    }
+    .ltext2{
+        width: 80%;
+    }
+  
+    .leftMessageBox{
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        width: 40vw;
+        height: 120vh;
+        background-color:#0F70B7
+    }
+    .container{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        height: fit-content;
+        height: 100vh;
+       
+    }
+    
+    .loginForm{
+        padding-top: 20vh;
+        padding-left: 100px;
+        padding-right: 100px;
+        background-color: white;
+        height: 90vh;
+        width: 45vw;
+    
+        
+    
+    }
+    
+    .welcomeText{
+        margin-top:20px;
+        margin-left:20px;
+        margin-bottom: 10px;
+    }
+    .loginMessage{
+        font-size: 20px;
+        font-weight: 800;
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+    .emailInput{
+        margin-left: 20px;
+    }
+    .passwordInput{
+        margin-left:20px;
+    }
+    
+    /* Customize the highlight color for focused input fields */
+    .custom-input:focus {
+        border-color: #007bff; /* Change this color to your desired highlight color */
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      }
+    
+    .options{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        margin-left:20px;
+        margin-right: 20px;
+        width: 80%;
+        
+    }
+    
+    .btnContinue{
+        width: 40vw;
+        height: 50px;
+        border-radius: 10px;
+        background-color: #0F70B7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color:white;
+    
+    }
+    .googleLogin{
+        width: 40vw;
+        height: 50px;
+        border-radius: 10px;
+        color: gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        border: solid 1px gray;
+    }
+    .centerContainer{
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        margin-top: 20px;
+        height: 35vh;
+        
+    }
+    
+    .text{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+    hr{
+        width: 30vw;
+    }
+    
+    .Signup{
+       margin-top: auto;
+    }
+
+}
+@media screen and (min-width:601px) and (max-width:899px) {
+    .container{
+        display: flex;
+        flex-flow: column nowrap;
+        background-color: #0F70B7;
+        padding-left: 150px;
+        padding-right: 150px;
+        padding-top:20vh;
+        height: fit-content;
+       
+    }
+    
+    .loginForm{
+        background-color: white;
+        height: 80vh;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+    
+    }
+    
+    .welcomeText{
+        margin-top:20px;
+        margin-left:20px;
+        margin-bottom: 10px;
+    }
+    .loginMessage{
+        font-size: 20px;
+        font-weight: 800;
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+    .emailInput{
+        margin-left: 20px;
+    }
+    .passwordInput{
+        margin-left:20px;
+    }
+    
+    /* Customize the highlight color for focused input fields */
+    .custom-input:focus {
+        border-color: #007bff; /* Change this color to your desired highlight color */
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      }
+    
+    .options{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        margin-left:20px;
+        margin-right: 20px;
+    }
+    
+    .btnContinue{
+        width: 50vw;
+        height: 50px;
+        border-radius: 10px;
+        background-color: #0F70B7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    
+    }
+    .googleLogin{
+        width: 50vw;
+        height: 50px;
+        border-radius: 10px;
+        color: gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        border: solid 1px gray;
+    }
+    .centerContainer{
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        margin-top: 20px;
+        height: 35vh;
+       
+        
+    }
+    
+    .text{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+    hr{
+        width: 30vw;
+    }
+    
+    .Signup{
+       margin-top: auto;
+    }
+
+  
+}
+.forgotPass:hover{
+    color:#007bff;
+}
+.forgotPass{
+    cursor: pointer;
+}
+.btnContinue:hover{
+    background-color: white;
+    color:#0F70B7
+}
+.googleLogin:hover{
+    background-color: #0F70B7;
+    color:white;
+}
+
+.image-res{
+    width: 100px;
+    height: 100px;
+}
+
+.loginForm{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.responseButton{
+    margin-top: 24px;
+}

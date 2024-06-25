@@ -1,0 +1,48 @@
+.container{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    height: 250px;
+    width: 90vw;
+    gap: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px; /* Adjust the border-radius for slightly rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+}
+.senderImage{
+    width: 70px;
+    height: 70px;
+    
+    background-color: #F0F1F2;;
+}
+.lireplus{
+    align-self: flex-end;
+    margin-right: 10px;
+    color: #0F70B7;
+    cursor: pointer;
+}
+.box{
+    display: flex;
+    flex-flow: column nowrap;
+    overflow-x: hidden;
+    height: 90%;
+    width: 60%;
+    max-width: 80%;
+    gap: 10px;
+}
+.deleteIcon{
+    align-self: flex-end;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.titre{
+    margin-bottom: 30px;
+    font-weight: 900;
+}
+.text{
+    width: 100%;
+    height: 40%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}

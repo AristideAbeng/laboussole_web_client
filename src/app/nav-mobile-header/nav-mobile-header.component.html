@@ -1,0 +1,76 @@
+<div class="navflexcontainer">
+  <div class="leftContainer" *ngIf="!hideOthers">
+    <div>
+      <div
+      (click)="openMenu()"
+      [ngStyle]="{ display: hideMenuIcon ? 'none' : 'block' }"
+    >
+      <img matRipple class="menuIcon" src="../../assets/menu-vector.svg" alt="" />
+  
+    </div>
+      <img
+        matRipple
+        class="logo_icon"
+        src="../../assets/logolaboussole1.svg"
+        alt=""
+        routerLink="/"
+      />
+    </div>
+  </div>
+ 
+  <div class="rightPlacedIcons">
+    <div class="mobileSearch">
+      <button  (click)="handleClick()" style="margin-left: 10px;margin-right: 15px;background-color: #2DAAE1;width: 30px;height: 30px;position: relative;bottom:2px;"  *ngIf="hideOthers" mat-mini-fab aria-label="Example icon button with a home icon">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <mat-form-field *ngIf="hideOthers" style="flex-grow: 1;position:relative;top:10px;">
+        <mat-label>trouve ta formation...</mat-label>
+        <input matInput type="text" [(ngModel)]="query" (keyup.enter)="onEnterKeyPressed()">
+        <button matSuffix mat-icon-button aria-label="Clear" *ngIf="query" (click)="query=''" >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <button *ngIf="!hideOthers" (click)="handleClick()" style="margin-left: 15px;margin-right: 10px;background-color:  #0F70B7;width: 30px;height: 30px;position: relative;bottom:2px;" mat-mini-fab aria-label="Example icon button with a home icon">
+          <mat-icon>search</mat-icon>
+        </button>
+        <button *ngIf="hideOthers" (click)="onEnterKeyPressed()" style="margin-left: 15px;margin-right: 10px;background-color: #2DAAE1;width: 30px;height: 30px;position: relative;bottom:2px;" mat-mini-fab aria-label="Example icon button with a home icon">
+          <mat-icon>search</mat-icon>
+        </button>
+    </div>
+   
+    <div matRipple class="profile" style="margin-left: 30px;" *ngIf="!hideOthers" [matMenuTriggerFor]="profileMenu"> <img src="../../assets/avatar.svg" alt="" width="30px" height="30px"></div>
+   
+  </div>
+</div>
+<div class="navFlexContainerTabletDesktop">
+
+    <div matRipple class="logo_icon" style="width:fit-content;height:fit-content" routerLink="/"><img src="../../assets/logolaboussole1.svg" alt="" ></div>
+    
+    <div matRipple class="home nav-item" routerLink="/">Acceuil </div>
+   
+    <div matRipple class="services nav-item" [matMenuTriggerFor]="servicesMenu" >Nos Services </div>
+            
+    <div matRipple class="apropos nav-item" routerLink="/aboutus">A propos de nous </div>
+
+
+  <div matRipple class="contact nav-item" routerLink="/contact">Contactez Nous</div>
+  <div class="searchBox nav-item">
+    <input type="text" class="searchInput" name="" id="" placeholder="trouve ton métier..." (keyup.enter)="onEnterKeyPressed()" [(ngModel)]="query" />
+  </div>
+  <div matRipple class="signupBtn nav-item" routerLink="/signup">inscription</div>
+  <div matRipple class="loginBtn nav-item" routerLink="/login">Connexion</div>
+</div>
+<mat-menu #servicesMenu="matMenu">
+  <button mat-menu-item routerLink="/metiers">Métiers</button>
+  <button mat-menu-item routerLink="/universites">Offres de formation</button>
+</mat-menu>
+<mat-menu #profileMenu="matMenu">
+  <button mat-menu-item routerLink="/signup">
+    <mat-icon>person</mat-icon>
+    <span>Créer un compte</span>
+  </button>
+  <button mat-menu-item routerLink="/login">
+    <mat-icon>login</mat-icon>
+    <span>Connexion</span>
+  </button>
+</mat-menu>

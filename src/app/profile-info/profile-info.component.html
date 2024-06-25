@@ -1,0 +1,68 @@
+<div class="container">
+    <mat-form-field class="">
+        <mat-label>Nom</mat-label>
+        <input matInput [(ngModel)]="nom">
+    </mat-form-field>
+    <mat-form-field class="">
+        <mat-label>Prenom</mat-label>
+        <input matInput [(ngModel)]="prenom">
+    </mat-form-field>
+    <mat-form-field class="">
+        <mat-label>Date de naissance</mat-label>
+        <input matInput type="date" [(ngModel)]="naissance">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Genre</mat-label>
+        <mat-select [(ngModel)]="genre">
+          <mat-option value="M">Masculin</mat-option>
+          <mat-option value="F">Feminin</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Dernier diplome obtenu</mat-label>
+        <mat-select [(ngModel)]="diplome">
+          <mat-option value="AUCUN">AUCUN</mat-option>
+          <mat-option value="CEP/FSLC">CEP/FSLC</mat-option>
+          <mat-option value="BEPC/GCE O-level">BEPC/GCE O-level</mat-option>
+          <mat-option value="PROBATOIRE">PROBATOIRE</mat-option>
+          <mat-option value="BAC/GCE A-level">BAC/GCE A-level</mat-option>
+          <mat-option value="LICENCE">LICENCE/BACHELORS DEGREE</mat-option>
+          <mat-option value="MASTER">MASTER/MASTERS DEGREE</mat-option>
+          <mat-option value="DOCTORAT">DOCTORAT/PhD</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="">
+        <mat-label>email</mat-label>
+        <input matInput type="email" [(ngModel)]="email">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Pays</mat-label>
+        <mat-select [(ngModel)]="pays" (selectionChange)="onPaysSelectionChange()">
+          <mat-option value="cameroun"><img src="../../assets/cameroon-flag-icon-64.png" alt="" width="20" height="20" style="position: relative;top:4px;"> Cameroun </mat-option>
+          <mat-option value="congo"> <img src="../../assets/republic-of-the-congo.png" alt="" width="20" height="20" style="position: relative;top:4px;"> Congo </mat-option>
+          <mat-option value="autre">AUTRE</mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field class="">
+        <mat-label>Numéro de téléphone</mat-label>
+        <input matInput [(ngModel)]="telephone">
+    </mat-form-field>
+    
+    <mat-form-field class="">
+        <mat-label>Ville</mat-label>
+        <input matInput [(ngModel)]="ville">
+    </mat-form-field>
+
+    <button mat-raised-button  (click)="updateProfile()" style="background-color: #2DAAE1;color:white;">enregistrer</button>
+</div>
+
+<ng-template #errorSheet>
+    <div class="sheetContent">
+      {{sheetErrorMessage}}
+       <br/><br/>
+       <button mat-raised-button (click)="closeBottomSheet()" style="background-color: lime;color:white;">ok</button>
+    </div>
+    
+  </ng-template>

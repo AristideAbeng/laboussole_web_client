@@ -1,0 +1,143 @@
+@mixin search-menu {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+    background-color: #f8f8f899;
+    margin-top: 40px;
+    justify-content: space-evenly;
+    border-radius: 60px;
+  }
+  .small-screen-menu {
+    display: none;
+  }
+  .menu-icon {
+    width: 80%;
+    margin: auto;
+    padding-top: 20px;
+  
+    .side-bar {
+      display: none;
+    }
+  }
+  
+  .container {
+    width: 100%;
+    .search-formation {
+      height: 326px;
+      padding-top: 150px;
+      // background-color: #d9d9d9;
+      // opacity: 10%;
+      box-sizing: border-box;
+      background: url("../../../assets/banner-formation.png") no-repeat;
+      background-size: cover;
+  
+      .search-bar {
+        margin: auto;
+        width: 283px;
+        height: 58px;
+        display: flex;
+  
+        span {
+          height: 100%;
+          //   align-items: center;
+          background-color: #fff;
+          padding: 18px 20px 0px 20px;
+          box-sizing: border-box;
+          border: 1px solid #a0a0a0;
+          border-right: 0px;
+          border-radius: 10px 0px 0px 10px;
+        }
+        input {
+          //   height: 100%;
+          box-sizing: border-box;
+          border: 0px;
+          outline: none;
+          width: 259px;
+          height: 58px;
+          font-size: 14px;
+          border: 1px solid #a0a0a0;
+          border-left: 0px;
+          border-radius: 0px 10px 10px 0px;
+        }
+      }
+      .search-menu {
+        // display: hi;
+  
+        img {
+          width: 10px;
+        }
+      }
+    }
+  
+    .menu-icon {
+      margin-bottom: 8px;
+    }
+  
+    .formation-content {
+      padding: 16px;
+      .recommendations-text {
+        display: flex;
+        justify-content: space-between;
+        h2 {
+          // margin-top: 24px;
+          margin-bottom: 16px;
+          margin-left: 16px;
+        }
+        .all {
+          text-decoration: none;
+          padding: 16px;
+          border: 1px solid #0f70b7;
+          border-radius: 24px;
+          color: #0f70b7;
+          margin-top: -20px;
+        }
+      }
+      .recommendations {
+        margin: 32px 0px;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        // align-items: center;
+        // flex-wrap: wrap;
+        gap: 32px;
+      }
+    }
+  }
+  
+  @media screen and (min-width: 600px) {
+    .container {
+      .search-formation {
+        // padding-top: 100px;
+        padding: 130px 0px 20px;
+  
+        .search-bar {
+          width: 601px;
+  
+          span {
+          }
+          input {
+            width: 577px;
+          }
+        }
+  
+        .search-menu {
+          @include search-menu();
+  
+          img {
+            // width: 10px;
+          }
+        }
+      }
+  
+      .formation-content {
+        gap: 16px;
+      }
+    }
+  }
+  
+  @media screen and (min-width: 992px) {
+    .container {
+    }
+  }
+  

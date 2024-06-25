@@ -1,0 +1,13 @@
+diff --git a/node_modules/pdfjs-dist/types/web/text_layer_builder.d.ts b/node_modules/pdfjs-dist/types/web/text_layer_builder.d.ts
+index fedad5d..d56d27e 100644
+--- a/node_modules/pdfjs-dist/types/web/text_layer_builder.d.ts
++++ b/node_modules/pdfjs-dist/types/web/text_layer_builder.d.ts
+@@ -38,7 +38,7 @@ export class TextLayerBuilder {
+     textContentItemsStr: any[];
+     renderingDone: boolean;
+     textDivs: any[];
+-    textDivProperties: WeakMap<WeakKey, any>;
++    textDivProperties: WeakMap<any, any>;
+     textLayerRenderTask: import("../src/display/text_layer.js").TextLayerRenderTask | null;
+     highlighter: any;
+     accessibilityManager: any;

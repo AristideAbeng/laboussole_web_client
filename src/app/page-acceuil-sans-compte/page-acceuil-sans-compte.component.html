@@ -1,0 +1,158 @@
+<app-nav-bar></app-nav-bar>
+  <div class="contentROP">
+    <div class="containerImageAcceuil">
+      <div class="welcomeText">
+        <div class="header-text">
+         <div>TROUVE TA VOIE </div>  <div class="nowText" style="display: flex;flex-flow:column nowrap;align-items:center;"> <span>MAINTENANT!</span> <img  style="position:relative;bottom:5px;" src="../../assets/Line.svg" alt="">  </div> 
+        </div>
+        <div class="small-header-text">
+          <strong>LABOUSSOLE </strong>  <span class="subtle-text" routerLink="/universites">t’oriente</span> vers la <span class="subtle-text" routerLink="/metiers"> carrière</span>  qui te correspond
+        </div>
+        <div class="actions" style="cursor:pointer;font-weight:900;font-size:0.8rem;margin-top:40px;flex-flow:row nowrap;justify-content:center;gap:10px;">
+          <div matRipple class="" routerLink="/metiers"  style="width:fit-content;color:white;background-color: #0F70B7;padding: 15px;border-radius: 25px;">Trouve ton métier</div>
+          <div matRipple class="" routerLink="/universites"  style="width:fit-content;color:white;background-color: #2DAAE1;padding:15px;border-radius: 25px;">Trouve ta formation</div>
+        </div>
+      </div>
+      <div class="imageAcceuil">
+        <img src="../../assets/photos1.png" alt="" />
+      </div>
+    </div>
+    <div class="mainMessageBox">
+      <div class="title-1">Nous t'accompagnons vers la réussite</div>
+      <div class="content-text">
+        Nous te proposons une orientation académique et professionnelle personnalisée à ton 
+        profil afin que tu aies une insertion socio-professionnelle réussie.
+      </div>
+    </div>
+    
+  <div class="optionsList">
+  <app-acceuil-option-box
+    [@zoomInOut]="option.isVisible"
+    *ngFor="let option of options"
+    [class]="option.class"
+    [title]="option.title"
+    [description]="option.description"
+    [icon_name]="option.icon_name"
+    [color]="option.color"
+    [routerLink]="option.routerLink"
+  ></app-acceuil-option-box>
+</div>
+  <div class="boxAboutLaboussole">
+    <div class="question">
+      <span style="color: #0761b9"> C'est quoi</span>
+      <span style="color: #00a4e4"> LABOUSSOLE ?</span>
+    </div>
+    <br />
+    <br />
+    <br />
+    <div class="reponse">
+      LABOUSSOLE est une application web intelligente d’aide à l’orientation académique et professionnelle et de formation en ligne dans les métiers du numérique... 
+      <a routerLink="/aboutus">lire plus</a>
+    </div>
+
+<!-- >>>>>>> main -->
+    <div matRipple class="aboutLaboussoleImage" routerLink="/aboutus">
+      <img src="../../assets/profiles/IMAGE PAGE D'ACCUEIL.png" alt="" />
+    </div>
+  </div>
+
+<!-- <div class="temoignages">
+  <div class="tem-title">Temoignages</div> -->
+  <div class="temoignages">
+    <div class="tem-title">Témoignages</div>
+  
+    <div class="tem-question">Que pensent t-ils?</div>
+    <div class="tem-text">
+      plusieurs personnes nous ont fait confiance et ont decidé de le faire savoir.
+    </div>
+    <div matRipple class="sendTemoignage" (click)="laisserTemoignage()">
+      <span matRipple>Laisser un témoignage </span>
+      <span class="rightArrowIcon">
+        <img
+          src="../../assets/icons8-arrow-right-60.png"
+          alt=""
+          style="width: 20px; height: 20px; position: relative; top: 5px"
+        />
+      </span>
+    </div>
+  
+    <div class="temoignagesSlider">
+      <span class="leftArrowIcon">
+        <button  (click)="prevTemoignage()" mat-mini-fab style="background-color: #00a4e4;" aria-label="Example icon button with a filter list icon">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+      </span>
+      <span [@zoomInOut]="currentTemoignageNumber" class="temoignageBox">
+        
+        <app-temoignage-box
+        [image_url]="picturesMap.get(this.temoignagesList[currentTemoignageNumber].nom)"
+        [score]="+this.temoignagesList[currentTemoignageNumber].telephone"
+        [name]="this.temoignagesList[currentTemoignageNumber].tem_name"
+        [description]="this.temoignagesList[currentTemoignageNumber].contenu"
+        [mail]="this.temoignagesList[currentTemoignageNumber].nom"
+        ></app-temoignage-box>
+        
+         
+        
+        
+      </span>
+      <span class="rightArrowIcon">
+        <button  (click)="nextTemoignage()" mat-mini-fab style="background-color: #00a4e4;" aria-label="Example icon button with a filter list icon">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </span>
+    </div>
+  </div>
+  
+  <div class="titleActu">Actualités du jour</div>
+  <div class="actualites">
+    <app-actualite-box
+    *ngFor="let article of allArticles"
+      class="actualites-item"
+      [image]="article.image_pc"
+      [date]="article.date"
+      [title]="article.titre"
+      [description]="article.contenu"
+      [tags]="article.domaine"
+      (click)="viewArticle(article.id_actualite)"
+    ></app-actualite-box>
+  </div>
+  <div class="largeScreenBox">
+    <div class="leftActus">
+      <app-actualite-box
+    *ngFor="let article of allArticles"
+      class="actualites-item"
+      [image]="article.image_pc"
+      [date]="article.date"
+      [title]="article.titre"
+      [description]="article.contenu"
+      [tags]="article.domaine"
+      (click)="viewArticle(article.id_actualite)"
+    ></app-actualite-box>
+    </div>
+  </div>
+  <div class="photo-footer">
+    <img
+      src="../../assets/PHOTOS2.png"
+      alt=""
+      style="width: 350px; height: 280px;position: relative;"
+    />
+  </div>
+  <app-footer></app-footer>
+  <div #floatingDiv class="notification">
+    <div class="popup" style="width:100%;display: flex;flex-flow: column nowrap;align-items: center;">
+      <span class="close-wrapper"><img class="img-close-notification" src="../../assets/close-red.svg" alt="" (click)="closePopup()"></span>  
+      <img class="main-img" [src]="popupArticle_image" (click)="viewNotification(popupArticle_id)" alt="">
+      <span class="bottom-bar" style="background-color:#0761b9;min-height: 5vh;border-bottom-left-radius: 15px;border-bottom-right-radius: 15px;display: flex;flex-flow: row nowrap;align-items: center;padding-top:10px;">
+
+        <span style="flex-grow: 9;color: white;margin-left: 20px;font-size:1.2rem;">{{popupArticle_heading}}</span>
+        <span style="flex-grow: 1;"><img src="../../assets/icons8-arrow-right-50.png" alt="" width="30" height="30" (click)="viewNotification(popupArticle_id)"></span>
+
+      </span> 
+    </div>
+  </div>
+</div>
+ 
+
+
+

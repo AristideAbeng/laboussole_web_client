@@ -1,0 +1,18 @@
+.container{
+    display: flex;
+    min-width: 200px;
+    flex-flow: column nowrap;
+    gap:10px;
+    padding-left: 20px;
+}
+
+.content{
+    width: 90%;
+    color: #53686A;
+}
+
+.question{
+    width: 70%;
+    font-weight: 700;
+    color: #53686A;
+}

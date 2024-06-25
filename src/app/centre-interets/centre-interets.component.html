@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="leftMessageBox">
+        <div class="ltext1">Ma personne, nous sommes ravi de t’accueillir parmi nous...</div>
+        <div class="ltext2">Nous comprenons que choisir une orientation académique et professionnelle est une etape
+            importante de ta vie, et nous sommes là pour te guider tout au long de ce processus. </div>
+ 
+    </div>
+    <div class="loginForm">
+      <div class="centresInteret">
+        <app-centre-interet-box *ngFor="let centre of this.getSubArray(All_Centres,start,start+6)"  [id]="centre.id" [text_val]="centre.nom" (eventEmitter)="saveChoice($event)"></app-centre-interet-box>
+      </div>
+      <div class="buttons">
+        <button mat-raised-button  (click)="terminateProcess()" style="background-color: #DEDEDE;">terminer</button>
+        <button mat-raised-button  [disabled]="disablebtn" (click)="start=start+7" style="margin-left:20px;"
+        [ngStyle]="{'background-color': disablebtn ? 'white' : '#0F70B7', 'color': disablebtn ? '#0F70B7' : 'white'}"
+        >suivant</button>
+      </div>
+    </div>
+</div>
+
+<ng-template #errorSheet>
+  <div class="sheetContent">
+    {{sheetErrorMessage}}
+     <br/><br/>
+     <button mat-raised-button (click)="closeBottomSheet()" style="background-color: red;color:white;">ok</button>
+  </div>
+  
+</ng-template>
+

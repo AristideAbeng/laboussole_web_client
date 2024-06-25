@@ -1,0 +1,149 @@
+<div class="menuPage" *ngIf="isMenuIconClicked">
+  <app-nav-mobile-page (menuIconClicked)="toggleMenu()"></app-nav-mobile-page>
+</div>
+<div class="restOfPage" *ngIf="isMenuIconClosed">
+  <app-nav-mobile-header
+    (menuIconClosed)="toggleMenu()"
+  ></app-nav-mobile-header>
+</div>
+
+<div style="display: flex; margin: 2%; width: 30%">
+  <a href="" style="text-decoration: none"
+    ><img
+      src="../../assets/boutonRetour.png"
+      alt=""
+      style="width: 20px; height: 15px"
+    />
+  </a>
+  <a routerLink="../etudes" style="text-decoration: none">Retour</a>
+</div>
+
+<div
+  style="
+    text-align: center;
+    width: 100%;
+    height: 200px;
+    background-image: url(../../assets/Rectangle4342.png);
+  "
+>
+  <h1 style="padding-top: 7%; font-size: xx-large; color: white">
+    Bourse d'étude au Canada
+  </h1>
+</div>
+
+<div class="conteneur" style="padding: 4%; width: 70%">
+  <h1>
+    <strong>
+      Bourses et programmes d’échanges éducationnels pour le développement
+      Canada-ANAS</strong
+    >
+  </h1>
+  <hr align="left" style="border: 2px solid; width: 30%; color: #0761b9" />
+  <br /><br />
+
+  <div class="communiqué">
+    <h2>Appel à Candidature</h2>
+    <br />
+    <p style="font-size: smaller">
+      Appel à candidatures pour l’année académique 2024-2025 est désormais
+      ouvert. Les établissements canadiens doivent présenter les candidatures en
+      ligne au nom des candidats admissibles au plus tard le 21 mars 2024 à
+      23 h 59 HAE.
+    </p>
+  </div>
+  <br /><br />
+  <span style="font-size: smaller">
+    Le 6 août 2017, le gouvernement du Canada a annoncé l’initiative Bourses et
+    programmes d’échanges éducationnels pour le développement Canada-ANASE qui
+    offre aux étudiants des pays membres de l’ANASE la possibilité de mener des
+    études ou des recherches de courte durée dans un établissement
+    d’enseignement postsecondaire au Canada dans un domaine qui correspond et
+    contribue à la mise en œuvre du Programme de développement durable à
+    l’horizon 2030. <br /><br />
+
+    L’initiative Bourses et programmes d’échanges éducationnels pour le
+    développement Canada-ANASE vise à réduire la pauvreté dans les pays en
+    développement de l’ANASE et à réaliser le Programme de de développement
+    durable à l’horizon 2030. Les bourses et les échanges d’études contribueront
+    à la réalisation de tous les objectifs de développement durable . Cette
+    initiative contribue à renforcer les liens interpersonnels entre le Canada
+    et la région indo-pacifique.
+    <br /><br />
+    Les bourses de l’initiative Bourses et programmes d’échanges éducationnels
+    pour le développement Canada- ANASE sont facilitées par des accords de
+    collaboration et d'échanges d'étudiants entre les établissements
+    d’enseignement postsecondaires canadiens et leurs établissements partenaires
+    des pays de l’ANASE.<br /><br />
+    Les Bourses et programmes d’échanges éducationnels pour le développement
+    Canada-ANASE sont un Programme d’échange à court terme dans le cadre du
+    Programme de bourses internationales d’Affaires mondiales Canada.
+  </span>
+  <br /><br />
+
+    <div class="accordion">
+        <div class="accordion-item" >
+            <div class="accordion-header"  (click)="showDropdown1 = !showDropdown1">
+                Admissibilité
+            </div>
+            <div class="accordion-content" *ngIf="showDropdown1">
+                toutes les infos 
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" (click)="showDropdown2 = !showDropdown2">
+                Valeur et durée  de la bourse
+            </div>
+            <div class="accordion-content" *ngIf="showDropdown2">
+                toutes les infos 
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" (click)="showDropdown3 = !showDropdown3">
+                Présentation de la candidature
+            </div>
+            <div class="accordion-content" *ngIf="showDropdown3">
+                toutes les infos 
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" (click)="showDropdown4 = !showDropdown4">
+                Dates clés
+            </div>
+            <div class="accordion-content" *ngIf="showDropdown4">
+                toutes les infos 
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" (click)="showDropdown5 = !showDropdown5">
+                Modalité de la bouse
+            </div>
+            <div class="accordion-content" *ngIf="showDropdown5">
+                toutes les infos 
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" (click)="showDropdown6 = !showDropdown6">
+                Contactez nous
+            </div>
+            <div class="accordion-content" *ngIf="showDropdown6">
+                toutes les infos 
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" (click)="showDropdown6 = !showDropdown6">
+        Contactez nous
+      </div>
+      <div class="accordion-content" *ngIf="showDropdown6">
+        toutes les infos
+      </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

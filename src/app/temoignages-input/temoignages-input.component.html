@@ -1,0 +1,27 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+    <div class="title2">Témoignages</div>
+    <div class="title1">Que pensent t-ils?</div>
+    <div class="text">plusieurs personnes nous ont fait confiance et ont decidé de le faire savoir.
+         Aussi, nous ne sommes pas les seuls a mettre l’orientation au coeur de tout. 
+    </div>
+    <div matRipple class="sendTemoignage" (click)="openDialog('0ms','0ms')">
+            <span>Laisser un témoignage</span>
+            <span class="rightArrowIcon">
+              <img
+                src="../../assets/icons8-arrow-right-60.png"
+                alt=""
+                style="width: 20px; height: 20px; position: relative; top: 5px"
+              />
+            </span>
+    </div>
+    <div class="temoignageList">
+        <app-temoignage-template *ngFor="let tem of temoignageList;"
+        [Name]="tem.tem_name"
+        [text]="tem.contenu"
+        [date]="tem.profession"
+        [picture]="picturesMap.get(tem.nom)"
+        [id]="tem.nom"
+        ></app-temoignage-template>
+    </div>
+</div>

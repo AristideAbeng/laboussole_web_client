@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="navigation">
+        <div class="acceuil nav-item" (click)="changePanel(1)" > <img class="nav-image" src="/laboussole_client_web/assets/icons8-group-64.png" alt=""> Acceuil</div>
+        <div class="utilisateurs nav-item" (click)="changePanel(2)" > <img class="nav-image" src="/laboussole_client_web/assets/icons8-group-64.png" alt=""> Utilisateurs</div>
+        <div class="formations nav-item" (click)="changePanel(3)" > <img class="nav-image" src="/laboussole_client_web/assets/icons8-group-64.png" alt=""> Offre de formation</div>
+        <div class="bourse nav-item" (click)="changePanel(4)" > <img class="nav-image" src="/laboussole_client_web/assets/icons8-group-64.png" alt=""> Bourses D'etudes</div>
+        <div class="voyages nav-item" (click)="changePanel(5)" > <img class="nav-image" src="/laboussole_client_web/assets/icons8-group-64.png" alt=""> Voyages D'etude</div>
+    </div>
+    <div class="contentMain">
+        <div class="HomePanel" *ngIf="showHomePanel">
+            <app-admin-home-panel></app-admin-home-panel>
+        </div>
+        <div class="utilisateursPanel" *ngIf="showUtilisateursPanel">
+            <app-admin-users-list></app-admin-users-list>
+        </div>
+        <div class="offresFormationsPanel" *ngIf="showOffresDeFormations">
+            <app-admin-offre-de-formations></app-admin-offre-de-formations>
+        </div>
+        <div class="boursesEtudes" *ngIf="showBoursesEtudes">
+            <app-admin-bourses-etudes></app-admin-bourses-etudes>
+        </div>
+        <div class="voyagesEtudes" *ngIf="showVoyagesEtudes">
+            <app-adminvoyages-etudes></app-adminvoyages-etudes>
+        </div>
+    </div>
+</div>

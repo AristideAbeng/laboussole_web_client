@@ -1,0 +1,37 @@
+.container{
+    width: 100%;
+    color: #53686A;
+    padding-left: 20px;
+    position: relative;
+    top:14vh;
+}
+h1{
+    width: 100%;
+    text-align: center;
+}
+h2,h1{
+    margin-top: 30px;
+}
+h2{
+    margin-bottom: 10px;
+}
+.content{
+    width: 90%;
+    color: #53686A;
+}
+
+.question{
+    width: 70%;
+    font-weight: 700;
+    color: #53686A;
+}
+app-nav-bar{
+    position:fixed;
+    width: 100%;
+    z-index: 100; /* Specify a z-index to control stacking order */
+    /* Other styles as needed */
+}
+app-footer{
+    position: relative;
+    top:18vh;
+}

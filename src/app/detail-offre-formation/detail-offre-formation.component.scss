@@ -1,0 +1,68 @@
+a{
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+span,li{
+    margin-left: 10px;
+    font-size: small;
+}
+@media screen and (max-width:700px) {
+    .conteneur{
+        display: flex;
+        width: 100%;
+        flex-flow: column nowrap;
+    }
+    .infoscles{
+        width: 100%;
+        background-color: #dddddd; 
+        padding: 2%;
+    }
+}
+@media screen and (min-width:701px) {
+    .infoscles{
+        background-color: #dddddd; 
+        padding: 5px;
+        flex-grow: 1;
+    }
+    .conteneur{
+        display: flex;
+        width: 100%;
+        flex-flow: row nowrap;
+    }
+}
+#DescriptionMetier{
+    margin-top: 50px;
+}
+.contenu{
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word; /* For newer browsers */
+}
+.salaire{
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word; /* For newer browsers */
+}
+.allinfos{
+    padding: 5px;
+}
+.lieuContainer{
+    cursor: pointer;
+    color: #2DAAE1;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+app-nav-bar{
+    position:fixed;
+    width: 100%;
+    z-index: 100; /* Specify a z-index to control stacking order */
+    /* Other styles as needed */
+  }
+  app-footer{
+   margin-top: 18vh;
+  }
+
+  .containerROP{
+   margin-top: 14vh;
+  }

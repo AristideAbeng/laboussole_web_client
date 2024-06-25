@@ -1,0 +1,178 @@
+<app-nav-bar></app-nav-bar>
+  <div class="container">
+    
+    <div class="search-formation">
+      <div class="header-text">Trouver son métier, <span style="background-color:#0f70b7; padding:5px;">Réussir sa vie</span> </div>
+      <div class="search-bar">
+        <span>
+          <img src="../../../assets/search.svg" alt="" />
+        </span>
+        <input type="text" placeholder="  trouve ton métier en 10s..." (keyup.enter)="onEnterKeyPressed()" [(ngModel)]="query" />
+      </div>
+      <div
+        class="search-menu"
+        [ngClass]="{ 'small-screen-menu': getScreenWidth <= 600 }"
+      >
+        <div>
+          <button mat-button [matMenuTriggerFor]="menu" (click)="searchCategory('market')">
+            Marketing &nbsp;
+          </button>
+          <mat-menu #menu="matMenu" yPosition="below">
+          </mat-menu>
+        </div>
+        <div>
+          <button mat-button [matMenuTriggerFor]="menu" (click)="searchCategory('econo finance')">
+            Economie &nbsp; 
+          </button>
+          <mat-menu #menu="matMenu" yPosition="below">
+            
+          </mat-menu>
+        </div>
+        <div>
+          <button mat-button [matMenuTriggerFor]="menu" (click)="searchCategory('math')">
+            Mathématique &nbsp;
+            
+          </button>
+          <mat-menu #menu="matMenu" yPosition="below">
+          </mat-menu>
+        </div>
+        <div>
+          <button mat-button [matMenuTriggerFor]="menu" (click)="searchCategory('socio')">
+            Sociologie &nbsp;
+           
+          </button>
+          <mat-menu #menu="matMenu" yPosition="below">
+            
+          </mat-menu>
+        </div>
+        <div>
+          <button mat-button [matMenuTriggerFor]="menu" (click)="searchCategory('geographie geo')">
+            Géographie &nbsp;
+           
+          </button>
+          <mat-menu #menu="matMenu" yPosition="below">
+            
+          </mat-menu>
+        </div>
+        <div class="large-screen-menu" *ngIf="getScreenWidth >= 992">
+          <button mat-button [matMenuTriggerFor]="menu" (click)="searchCategory('Droit avocat juriste juge magistrat juridique')">
+            Droit &nbsp;
+            
+          </button>
+          <mat-menu #menu="matMenu" yPosition="below">
+            
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+    <div class="menu-icon">
+      <button *ngIf="getScreenWidth <= 600" mat-button (click)="showMobileMenu()">
+        <img src="../../../assets/menu.svg" alt="" />
+      </button>
+      <div class="side-bar" onclick="">
+        <div>
+          <button mat-button [matMenuTriggerFor]="menu">
+            Marketing &nbsp; 
+          </button>
+          <mat-menu #menu="matMenu" yPosition="below">
+            
+          </mat-menu>
+        </div>
+        <div>
+          <button mat-button [matMenuTriggerFor]="menu">
+            Economie &nbsp; 
+          </button>
+          <mat-menu #menu="matMenu" yPosition="below">
+            
+          </mat-menu>
+        </div>
+        <div>
+          <button mat-button [matMenuTriggerFor]="menu">
+            Mathématique &nbsp;
+          
+          </button>
+          <mat-menu #menu="matMenu" yPosition="below">
+           
+          </mat-menu>
+        </div>
+        <div>
+          <button mat-button [matMenuTriggerFor]="menu">
+            Sociologie &nbsp;
+          
+          </button>
+          <mat-menu #menu="matMenu" yPosition="below">
+            
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+
+    <!-- content -->
+
+    <div class="formation-content">
+      <div class="recommendations-text">
+        <h2>Recommandations</h2>
+      </div>
+      <div class="recommendations">
+        <div *ngFor="let metier of initialReccomendationsList; index as i">
+          <app-offre-formation-box
+            [metierBox]="metier" (click)="navigateToDetails(metier.id_metiers)"
+          ></app-offre-formation-box>
+        </div>
+      </div>
+      <div class="seeAll">
+        <button class="btnPlus" mat-raised-button style="background-color: #0f70b7;color:white;" (click)="voirToutesReccomandatins()">voir plus</button>
+      </div>
+      <div class="recommendations-text">
+        <h2>Tous les métiers</h2>
+        <a href="" class="all" routerLink="/voir-tout-metiers">Voir tout</a>
+      </div>
+      <div class="recommendations">
+        <div *ngFor="let metier of initialMetierList; index as i">
+          <app-offre-formation-box (click)="navigateToDetails(metier.id_metiers)"
+            [metierBox]="metier"
+          ></app-offre-formation-box>
+        </div>
+      </div>
+      <div class="seeAll">
+        <button class="btnPlus" mat-raised-button style="background-color: #0f70b7;color:white;" (click)="voirTousMetiers()">voir plus</button>
+      </div>
+      
+      <div class="recommendations-text">
+        <h2>Plus Populaires</h2>
+      </div>
+      <div class="recommendations">
+        <div *ngFor="let metier of recommendationsList; index as i">
+          <app-offre-formation-box
+            [metierBox]="metier" (click)="navigateToDetails(metier.id_metiers)"
+          ></app-offre-formation-box>
+        </div>
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </div>
+<div class="mobileMenu">
+  <img src="../../../assets/x_close - icon - black.png" alt="" (click)="closeMenu()" width="20" height="20" style="position: relative;left: 90%;margin-top: 20px;">
+  <div matRipple class="titleMenu">Métiers par domaine</div>
+  <div matRipple class="menuItem" (click)="searchCategory('info tech ')">Technologie</div>
+  <div matRipple class="menuItem" (click)="searchCategory('agriculture agro')">Agriculture</div>
+  <div matRipple class="menuItem" (click)="searchCategory('psycho medeci medica infirmier sante pharma')">Santé</div>
+  <div matRipple class="menuItem" (click)="searchCategory('droit avocat juriste juge magistrat juridique')">Droit</div>
+  <div matRipple class="menuItem" (click)="searchCategory('business manage gestio')">Management</div>
+  <div matRipple class="menuItem" (click)="searchCategory('construction architec macon civil btp batiment ')">Construction et BTP</div>
+  <div matRipple class="menuItem" (click)="searchCategory('mines petrole minier minera')">Mines</div>
+  <div matRipple class="menuItem" (click)="searchCategory('energie solaire electri')">Énergie renouvelable</div>
+  <div matRipple class="menuItem" (click)="searchCategory('hydrocar petrole minier minera ')">Hydrocarbures</div>
+  <div matRipple class="menuItem" (click)="searchCategory('manage Entrepreneur')">Entrepreneuriat</div>
+  <div matRipple class="menuItem" (click)="searchCategory('design création ')">Création et Design</div>
+  <div matRipple class="menuItem" (click)="searchCategory('environnement ecologi bois foret')">Environnement</div>
+  <div matRipple class="menuItem" (click)="searchCategory('ingénierie genie')">Ingénierie</div>
+  <div matRipple class="menuItem" (click)="searchCategory('humaines sociales econom politi anthro socio')">Sciences Humaines et sociales</div>
+  <div matRipple class="menuItem" (click)="searchCategory('langue bilingue linguist francais anglais ')">Langues</div>
+  <div matRipple class="menuItem" (click)="searchCategory('tourisme hôtellerie voyage cuisinier hotel ')">Tourisme et Hôtellerie</div>
+  <div matRipple class="menuItem" (click)="searchCategory('commerce vente affaires ')">Commerce et vente</div>
+  <div matRipple class="menuItem" (click)="searchCategory('artisan arts sculpteur peintre ')">Artisanat et métiers d'arts</div>
+  <div matRipple class="menuItem" (click)="searchCategory('forêt bois ')">Forêts bois</div>
+  <div matRipple class="menuItem" (click)="searchCategory('textile coutur stylis modelis')">Textile</div>
+  <div matRipple class="menuItem" (click)="searchCategory('éducation instituteur institutrice enseignant professeur formateur')">Éducation</div>
+</div>

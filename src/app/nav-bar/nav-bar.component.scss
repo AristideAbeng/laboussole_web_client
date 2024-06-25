@@ -1,0 +1,9 @@
+.container {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+}
+
+/* On hover, increase the shadow to create an elevation effect */
+.container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}

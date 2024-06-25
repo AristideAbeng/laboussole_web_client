@@ -1,0 +1,47 @@
+.container{
+  background-color: #0F70B7;
+  display: grid;
+  color: white;
+  padding-left: 10px;
+
+}
+.slogan{
+  text-align: center;
+  padding-top: 20px;
+}
+
+.line-container{
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+.horizontalList,.legal{
+  margin-bottom: 20px;
+}
+.socialMedia{
+  width: 80%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: end;
+  gap: 10px;
+  margin-top: 20px;
+  
+}
+
+.newsletter,.newsLetterText{
+  margin-bottom: 10px;
+}
+.flex-container{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  padding-left: 10px;
+}
+.phone,.mail,.location,.conditions{
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 2px;
+  align-items: center;
+}
+.legal{
+  font-weight: 900;
+}

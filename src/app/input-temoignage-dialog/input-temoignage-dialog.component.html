@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Temoignage</h2>
+<mat-dialog-content>
+  <mat-form-field class="example-full-width">
+    <mat-label>Nous vous ecoutons!</mat-label>
+    <textarea matInput [(ngModel)]="text" ></textarea>
+  </mat-form-field>
+  <div>Laisser une evaluation etoilée</div>
+  <div class="rating_bar">
+    <button  *ngFor="let i of [1, 2, 3, 4, 5]" (click)="noteRating(i)" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+      <mat-icon *ngIf="i > selectedRating">star_border</mat-icon>
+      <mat-icon *ngIf="i <= selectedRating">star</mat-icon>
+    </button>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close style="color: red;">annuler</button>
+  <button mat-button mat-dialog-close cdkFocusInitial style="color:white;background-color:#0F70B7;"(click)="enregistrerTemoignage()" >Envoyer</button>
+</mat-dialog-actions>

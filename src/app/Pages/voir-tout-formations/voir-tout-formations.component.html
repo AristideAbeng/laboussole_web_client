@@ -1,0 +1,149 @@
+<app-nav-bar></app-nav-bar>
+  
+    <div class="container">
+      <div class="search-formation">
+        <div class="search-bar">
+          <span>
+            <img src="../../../assets/search.svg" alt="" />
+          </span>
+          <input type="text" placeholder="Search..." (keyup.enter)="onEnterKeyPressed()" [(ngModel)]="query" />
+        </div>
+       
+
+        <!--
+           <div
+          class="search-menu"
+          [ngClass]="{ 'small-screen-menu': getScreenWidth <= 600 }"
+        >
+           <div>
+            <button mat-button [matMenuTriggerFor]="menu">
+              Université d’Etat &nbsp; <img src="../../../assets/arrow-down.svg" alt="" />
+            </button>
+            <mat-menu #menu="matMenu" yPosition="below">
+              <button mat-menu-item>Item 1</button>
+              <button mat-menu-item>Item 2</button>
+            </mat-menu>
+          </div>
+          <div>
+            <button mat-button [matMenuTriggerFor]="menu">
+              Institutions publiques &nbsp; <img src="../../../assets/arrow-down.svg" alt="" />
+            </button>
+            <mat-menu #menu="matMenu" yPosition="below">
+              <button mat-menu-item>Item 1</button>
+              <button mat-menu-item>Item 2</button>
+            </mat-menu>
+          </div>
+          <div>
+            <button mat-button [matMenuTriggerFor]="menu">
+              Institutions privées &nbsp;
+              <img src="../../../assets/arrow-down.svg" alt="" />
+            </button>
+            <mat-menu #menu="matMenu" yPosition="below">
+              <button mat-menu-item>Item 1</button>
+              <button mat-menu-item>Item 2</button>
+            </mat-menu>
+          </div>
+          <div>
+            <button mat-button [matMenuTriggerFor]="menu">
+              Autres Etablissemement &nbsp;
+              <img src="../../../assets/arrow-down.svg" alt="" />
+            </button>
+            <mat-menu #menu="matMenu" yPosition="below">
+              <button mat-menu-item>Item 1</button>
+              <button mat-menu-item>Item 2</button>
+            </mat-menu>
+          </div>
+        </div>
+           
+      </div>
+      <div class="menu-icon">
+        <button *ngIf="getScreenWidth <= 600" mat-button>
+          <img src="../../../assets/menu.svg" alt="" />
+        </button>
+        <div class="side-bar" onclick="">
+          <div>
+            <button mat-button [matMenuTriggerFor]="menu">
+              Marketing &nbsp; <img src="../../../assets/arrow-down.svg" alt="" />
+            </button>
+            <mat-menu #menu="matMenu" yPosition="below">
+              <button mat-menu-item>Item 1</button>
+              <button mat-menu-item>Item 2</button>
+            </mat-menu>
+          </div>
+          <div>
+            <button mat-button [matMenuTriggerFor]="menu">
+              Economie &nbsp; <img src="../../../assets/arrow-down.svg" alt="" />
+            </button>
+            <mat-menu #menu="matMenu" yPosition="below">
+              <button mat-menu-item>Item 1</button>
+              <button mat-menu-item>Item 2</button>
+            </mat-menu>
+          </div>
+          <div>
+            <button mat-button [matMenuTriggerFor]="menu">
+              Mathématique &nbsp;
+              <img src="../../../assets/arrow-down.svg" alt="" />
+            </button>
+            <mat-menu #menu="matMenu" yPosition="below">
+              <button mat-menu-item>Item 1</button>
+              <button mat-menu-item>Item 2</button>
+            </mat-menu>
+          </div>
+          <div>
+            <button mat-button [matMenuTriggerFor]="menu">
+              Sociologie &nbsp;
+              <img src="../../../assets/arrow-down.svg" alt="" />
+            </button>
+            <mat-menu #menu="matMenu" yPosition="below">
+              <button mat-menu-item>Item 1</button>
+              <button mat-menu-item>Item 2</button>
+            </mat-menu>
+          </div>
+        </div>
+        -->
+      
+      </div>
+  
+      <!-- content -->
+  
+      <div class="formation-content">
+        <div class="recommendations-text">
+          <h2>Universités</h2>
+          <!-- <a href="" class="all">Voir tout</a> -->
+        </div>
+        <div *ngIf="!showingRecs" class="recommendations">
+          <mat-form-field>
+            <mat-label> <mat-icon>tune</mat-icon> Choisis un pays</mat-label>
+            <mat-select [(ngModel)]="pays" (selectionChange)="onPaysSelectionChange()">
+              <mat-option value="Cameroun"><img src="../../assets/cameroon-flag-icon-64.png" alt="" width="20" height="20" style="position: relative;top:4px;"> Cameroun </mat-option>
+              <mat-option value="Congo"> <img src="../../assets/republic-of-the-congo.png" alt="" width="20" height="20" style="position: relative;top:4px;"> Congo </mat-option>
+            </mat-select>
+        </mat-form-field> <br><br>
+          <div id="CamerUniv"><img src="../../../assets/cameroon-icon.svg" alt="">  <strong style="position: relative;bottom:10px;left:10px;">Cameroun</strong> </div>
+          <div class="recommendations" id="CamerUniv">
+            <div *ngFor="let formation of CamerUniv; index as i">
+              <app-filiere-formation-box
+                [formationBox]="formation" (click)="navigateToDetails(formation.universite_id)"
+              ></app-filiere-formation-box>
+            </div>
+          </div>
+  
+          <div id="CongoUniv"><img src="../../../assets/congo.svg" alt="">  <strong style="position: relative;bottom:10px;left:10px;">Congo</strong> </div>
+          <div class="recommendations" >
+            <div *ngFor="let formation of CongoUniv; index as i">
+              <app-filiere-formation-box
+                [formationBox]="formation" (click)="navigateToDetails(formation.universite_id)"
+              ></app-filiere-formation-box>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="showingRecs" class="recommendations">
+          <div *ngFor="let formation of reccomandations">
+            <app-filiere-formation-box (click)="navigateToDetails(formation.faculte_id)" [formationBox]="formation"
+            ></app-filiere-formation-box>
+          </div>
+        </div>
+      </div>
+      <app-footer></app-footer>
+    </div>
+  

@@ -1,0 +1,37 @@
+<div class="container">
+    <mat-form-field appearance="outline">
+                <mat-label>Mot de passe actuel</mat-label>
+                <input matInput [formControl]="passwordControlActuel"
+                 [type]="hide ? 'password' : 'text'" [(ngModel)]="passwordActuel">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Nouveau Mot de passe</mat-label>
+        <input matInput [formControl]="passwordControlNouveau"
+         [type]="hide ? 'password' : 'text'" [(ngModel)]="passwordNouveau">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>confirmer mot de passe</mat-label>
+        <input matInput [formControl]="passwordControlConfirm"
+         [type]="hide ? 'password' : 'text'" [(ngModel)]="passwordConfirm">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <button mat-raised-button  (click)="updatePassword()" style="background-color: #2DAAE1;color:white;">save</button>
+</div>
+<ng-template #errorSheet>
+  <div class="sheetContent">
+    {{sheetErrorMessage}}
+     <br/><br/>
+     <button *ngIf="!success" mat-raised-button (click)="closeBottomSheet()" style="background-color: red;color:white;">ok</button>
+     <button *ngIf="success" mat-raised-button (click)="closeBottomSheet()" style="background-color: green;color:white;">ok</button>
+  </div>
+  
+</ng-template>

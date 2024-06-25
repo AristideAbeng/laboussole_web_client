@@ -1,0 +1,11 @@
+<div matRipple class="container">
+    <div class="photo"> <img [src]="image" alt="" style="width: 150px;height:110px;"> </div>
+    <div class="rightBox">
+        <div class="date" style="color: #6941C6;font-weight:600;font-size:14px;margin-bottom: 10px;">{{date}}</div>
+        <div class="title" style="color: black;font-weight:900;font-size:16px;margin-bottom: 10px;">{{title}}</div>
+        <div class="description" [innerHTML]="descriptionHtml" style="color: gray;font-weight:500;font-size:12px;margin-bottom: 30px;height: 50px;min-width: 200px;"></div>
+        <div class="tags" style="color: #027A48;">
+            {{tags}}
+        </div>
+    </div>
+</div>

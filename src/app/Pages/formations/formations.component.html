@@ -1,0 +1,164 @@
+<app-nav-bar></app-nav-bar>
+  
+    <div class="container">
+      <div class="search-formation">
+        <div class="header-text">Le savoir est la clé du  <span style="background-color:#0f70b7; padding:5px;">succès !</span> </div>
+        <div class="search-bar">
+          <span>
+            <img src="../../../assets/search.svg" alt="" />
+          </span>
+          <input type="text" placeholder=" trouve ta formation en 10s ..." (keyup.enter)="onEnterKeyPressed()" [(ngModel)]="query" />
+        </div>
+        <!--
+          <div
+          class="search-menu"
+          [ngClass]="{ 'small-screen-menu': getScreenWidth <= 600 }"
+          >
+          <div>
+            <button mat-button [matMenuTriggerFor]="menu">
+              Université d’Etat &nbsp; <img src="../../../assets/arrow-down.svg" alt="" />
+            </button>
+            <mat-menu #menu="matMenu" yPosition="below">
+              
+            </mat-menu>
+          </div>
+          <div>
+            <button mat-button [matMenuTriggerFor]="menu">
+              Institutions publiques &nbsp; <img src="../../../assets/arrow-down.svg" alt="" />
+            </button>
+            <mat-menu #menu="matMenu" yPosition="below">
+              
+            </mat-menu>
+          </div>
+          <div>
+            <button mat-button [matMenuTriggerFor]="menu">
+              Institutions privées &nbsp;
+              <img src="../../../assets/arrow-down.svg" alt="" />
+            </button>
+            <mat-menu #menu="matMenu" yPosition="below">
+              
+            </mat-menu>
+          </div>
+          <div>
+            <button mat-button [matMenuTriggerFor]="menu">
+              Autres Etablissemement &nbsp;
+              <img src="../../../assets/arrow-down.svg" alt="" />
+            </button>
+            <mat-menu #menu="matMenu" yPosition="below">
+              
+            </mat-menu>
+          </div>
+        </div>
+        -->
+      </div>
+      <!--
+
+        <div class="menu-icon">
+        <button *ngIf="getScreenWidth <= 600" mat-button (click)="showMobileMenu()">
+          <img src="../../../assets/menu.svg" alt="" />
+        </button>
+        <div class="side-bar" onclick="">
+          <div>
+            <button mat-button [matMenuTriggerFor]="menu">
+              Marketing &nbsp; <img src="../../../assets/arrow-down.svg" alt="" />
+            </button>
+            <mat-menu #menu="matMenu" yPosition="below">
+             
+            </mat-menu>
+          </div>
+          <div>
+            <button mat-button [matMenuTriggerFor]="menu">
+              Economie &nbsp; <img src="../../../assets/arrow-down.svg" alt="" />
+            </button>
+            <mat-menu #menu="matMenu" yPosition="below">
+              
+            </mat-menu>
+          </div>
+          <div>
+            <button mat-button [matMenuTriggerFor]="menu">
+              Mathématique &nbsp;
+              <img src="../../../assets/arrow-down.svg" alt="" />
+            </button>
+            <mat-menu #menu="matMenu" yPosition="below">
+             
+            </mat-menu>
+          </div>
+          <div>
+            <button mat-button [matMenuTriggerFor]="menu">
+              Sociologie &nbsp;
+              <img src="../../../assets/arrow-down.svg" alt="" />
+            </button>
+            <mat-menu #menu="matMenu" yPosition="below">
+              
+            </mat-menu>
+          </div>
+        </div>
+      </div>
+
+      -->
+      
+  
+      <!-- content -->
+
+      <mat-form-field>
+        <mat-label> <mat-icon>tune</mat-icon> Choisis un pays</mat-label>
+        <mat-select [(ngModel)]="pays" (selectionChange)="onPaysSelectionChange()">
+          <mat-option value="Cameroun"><img src="../../assets/cameroon-flag-icon-64.png" alt="" width="20" height="20" style="position: relative;top:4px;"> Cameroun </mat-option>
+          <mat-option value="Congo"> <img src="../../assets/republic-of-the-congo.png" alt="" width="20" height="20" style="position: relative;top:4px;"> Congo </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <div class="formation-content">
+        <div class="recommendations-text">
+          <h2>Recommandations</h2>
+          <a class="all" routerLink="/voir-tout-formations" (click)="handleClick()">Voir tout</a>
+          
+        </div>
+        
+        <div class="recommendations">
+          <div *ngFor="let formation of initialReccomendationsList; index as i">
+            <app-filiere-formation-box (click)="navigateToFaculteDetails(formation.faculte_id)"
+              [formationBox]="formation"
+            ></app-filiere-formation-box>
+          </div>
+        </div>
+        <div class="seeAll">
+          <button class="btnPlus" mat-raised-button style="background-color: #0f70b7;color:white;" (click)="voirToutesLesReccomandations()">voir plus</button>
+        </div>
+        <div class="recommendations-text">
+          <h2>Par Pays</h2>
+        </div>
+        <div *ngIf="pays!='Congo'"><img src="../../../assets/cameroon-icon.svg" alt="">  <strong style="position: relative;bottom:10px;left:10px;">Cameroun</strong> </div>
+        <div class="recommendations" *ngIf="pays!='Congo'">
+          <div *ngFor="let formation of CamerUniv; index as i">
+            <app-filiere-formation-box
+              [formationBox]="formation" (click)="navigateToDetails(formation.universite_id)"
+            ></app-filiere-formation-box>
+          </div>
+        </div>
+
+        <div *ngIf="pays!='Cameroun'"><img src="../../../assets/congo.svg" alt="">  <strong style="position: relative;bottom:10px;left:10px;">Congo</strong> </div>
+        <div class="recommendations" *ngIf="pays!='Cameroun'">
+          <div *ngFor="let formation of CongoUniv; index as i">
+            <app-filiere-formation-box
+              [formationBox]="formation" (click)="navigateToDetails(formation.universite_id)"
+            ></app-filiere-formation-box>
+          </div>
+        </div>
+        <div class="seeAll"  *ngIf="pays!='Cameroun'">
+          <button class="btnPlus" mat-raised-button style="background-color: #0f70b7;color:white;" (click)="handleClick()">voir plus</button>
+        </div>
+      </div>
+      <app-footer></app-footer>
+    </div>
+    <div class="mobileMenu">
+      <img src="../../../assets/x_close - icon - black.png" alt="" (click)="closeMenu()" width="20" height="20" style="position: relative;left: 90%;margin-top: 20px;">
+      <div class="titleMenu">Métiers par domaine</div>
+      <div class="menuItem">Communication</div>
+      <div class="menuItem">Droit</div>
+      <div class="menuItem">Psychologie</div>
+      <div class="menuItem">Médecine</div>
+      <div class="menuItem">Géographie</div>
+      <div class="menuItem">Informatique</div>
+    </div>
+  

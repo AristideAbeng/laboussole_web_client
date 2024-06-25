@@ -1,0 +1,9 @@
+<div class="container" [ngStyle]="{'background-color': checkUnReadNotification(notification.id_notification)?'rgb(45, 170, 225,0.1)':'#F0F1F2'}">
+    <img [src]="notification.image_pc" alt="" class="senderImage">
+    <div class="box" >
+        <div class="deleteIcon"></div>
+        <div class="titre">{{notification.titre}}</div>
+        <div class="text" [innerHTML]="contentHtml"></div>
+        <div class="lireplus">lire plus <img src="../../assets/right-arrow.svg" style="position: relative; top:5px;" width="10" height="20" alt=""></div>
+    </div>
+</div>

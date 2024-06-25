@@ -1,0 +1,84 @@
+.container{
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+}
+.leftblock{
+    width: 20%;
+    height: 100vh;
+    background-color: #2b2d43;
+}
+
+.loginForm{
+    flex-grow: 1;
+    padding-left: 10%;
+    padding-top: 20vh;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+.welcomeText{
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+.options{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin-left:20px;
+    margin-right: 20px;
+}
+
+.btnContinue{
+width: 50vw;
+height: 50px;
+border-radius: 10px;
+background-color: #0F70B7;
+display: flex;
+justify-content: center;
+align-items: center;
+color:white;
+
+}
+.googleLogin{
+width: 50vw;
+height: 50px;
+border-radius: 10px;
+color: gray;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 30px;
+border: solid 1px gray;
+}
+.centerContainer{
+display: flex;
+flex-flow: column nowrap;
+align-items: center;
+margin-top: 20px;
+height: 35vh;
+
+}
+
+.text{
+display: flex;
+flex-flow: row nowrap;
+justify-content: center;
+width: 100%;
+margin-top: 10px;
+}
+hr{
+width: 10vw;
+}
+
+.Signup{
+margin-top: auto;
+}
+
+mat-form-field{
+width: 50vw;
+
+}

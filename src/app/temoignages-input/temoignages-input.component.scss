@@ -1,0 +1,75 @@
+.container{
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    position: relative;
+    top:13vh;
+
+}
+
+.title2,.title1{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#0F70B7;
+    margin-top: 20px;
+}
+
+.title1{
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.text{
+    width: 90%;
+    text-align: center;
+    padding: 10px;
+}
+
+.sendTemoignage{
+    border: 1px solid #2DAAE1;
+    padding:20px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.sendTemoignage:hover{
+    border: 1px solid white;
+}
+
+.temoignageList{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+@media screen and (min-width:601px) and (max-width:1024px) {
+    .text{
+        width: 80%;
+    }
+}
+@media screen and (min-width:1025px) {
+    .text{
+        width: 60%;
+    }
+}
+
+app-nav-bar{
+    position:fixed;
+    width: 100%;
+    z-index: 100; /* Specify a z-index to control stacking order */
+    /* Other styles as needed */
+  }
+  app-footer{
+    position: relative;
+    top:18vh;
+  }
+
+  

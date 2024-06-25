@@ -1,0 +1,91 @@
+<app-nav-bar></app-nav-bar>
+<div class="containerROP">
+  <div style="display: flex">
+    <div style="display: flex; margin: 2%; width: 30%">
+      <a routerLink="../../universites"
+        ><img
+          src="../../assets/boutonRetour.png"
+          alt=""
+          style="width: 20px; height: 15px"
+        />
+      </a>
+      <a routerLink="../../universites">Retour</a>
+    </div>
+  </div>
+  
+  <div
+    style="
+      text-align: center;
+      width: 100%;
+      height: 200px;
+      background-image: url(../../assets/computer-eng.jpeg);
+    "
+  >
+    <h1 style="padding-top: 7%; font-size: xx-large; color: white">
+      {{ filiereItem.nom }}
+    </h1>
+  </div>
+  
+  <div class="conteneur" style="display: flex; padding: 2%">
+  
+    <div class="allinfos" style="width: max-content; margin-left: 2%">
+      <div id="DescriptionMetier">
+        <span></span>
+        <img
+          src="../../assets/pseudo.png"
+          alt=""
+          style="width: 15px; height: 15; margin-right: 5px"
+        />
+        <strong>Présentation de l’{{ filiereItem.nom }} ?</strong> <br />
+        <hr />
+        <span class="contenu"
+          >{{ filiereItem.descriptif }}
+  
+          <br /><br />
+        </span>
+        <br /><br /><br />
+      </div>
+      <div id="EcoleFormation">
+        <span></span>
+        <img
+          src="../../assets/pseudo.png"
+          alt=""
+          style="width: 15px; height: 15; margin-right: 5px"
+        />
+        <strong>Les facultés de l’{{ filiereItem.nom }}</strong> <br />
+        <hr />
+        <span class="ecole formation">
+          
+  
+          <app-faculte-box
+            [faculte]="faculte"
+            *ngFor="let faculte of facultes"
+            (click)="navigateToDetails(faculte.faculte_id)"
+            (id)="onIdFromChild($event)"
+          ></app-faculte-box>
+        </span>
+        <br /><br /><br />
+      </div>
+  
+      <div id="Entreprise">
+        <span></span>
+        <img
+          src="../../assets/pseudo.png"
+          alt=""
+          style="width: 15px; height: 15; margin-right: 5px"
+        />
+        <strong>Les écoles de l’{{ filiereItem.nom }}</strong> <br />
+        <hr />
+        <app-faculte-box
+            [faculte]="faculte"
+            *ngFor="let faculte of ecoles"
+            (click)="navigateToDetails(faculte.faculte_id)"
+            (id)="onIdFromChild($event)"
+          ></app-faculte-box>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<app-footer></app-footer>

@@ -1,0 +1,145 @@
+.container{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    color: #717171;
+}
+.blueBox{
+    width: 90%;
+    background-color: #0F70B7;
+    border-radius: 15px;
+    color: white;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding:20px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+.title1{
+    margin-top: 20px;
+    font-weight: 900;
+    color: #0F70B7;
+    font-size: 1.5rem;
+    margin-bottom: 3px;
+}
+.text1{
+    font-size: 0.8rem;
+    width: 50%;
+    text-align: center;
+}
+.text2{
+    font-size: 0.7rem;
+    text-align: center;
+   
+
+}
+
+.form{
+    width: 90%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    margin-bottom: 150px;
+}
+.socialMedia{
+    margin-top:50px;
+}
+.midContainer{
+    width: 85%;
+    background-color: white;
+    border:1px solid white;
+    border-radius: 15px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+@media screen and (min-width:600px) and (max-width:899px){
+    .midContainer{
+        width: 85%;
+        background-color: white;
+        border:1px solid white;
+        border-radius: 15px;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-around;
+        align-items: center;
+        height: fit-content;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .blueBox{
+        width: 70%;
+        background-color: #0F70B7;
+        border-radius: 15px;
+        color: white;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        padding:20px;
+        margin-top: 10px;
+        margin-bottom: 50px;
+      
+    }
+    .form{
+        width: 70%;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 50px;
+    }
+}
+@media screen and (min-width:900px){
+    .midContainer{
+        width: 85%;
+        background-color: white;
+        border:1px solid white;
+        border-radius: 15px;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        align-items: center;
+        height: fit-content;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .blueBox{
+        width: 30%;
+        background-color: #0F70B7;
+        border-radius: 15px;
+        color: white;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        padding:20px;
+        margin-top: 10px;
+        margin-bottom: 50px;
+      
+    }
+    .form{
+        width: 60%;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 50px;
+    }
+}
+app-nav-bar{
+    position:fixed;
+    width: 100%;
+    z-index: 100; /* Specify a z-index to control stacking order */
+    /* Other styles as needed */
+  }
+  app-footer{
+    margin-top: 18vh;
+  }
+  .container{
+   margin-top: 12vh;
+  }

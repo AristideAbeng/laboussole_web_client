@@ -1,0 +1,4 @@
+<div class="container" (click)="changeState()" [ngClass]="{'container-selected':clicked,'container-unselected':!clicked}">
+    <div class="icon" *ngIf="clicked"> <img src="../../assets/tick-icon.png" alt=""></div>
+    <div class="text" [ngClass]="{'text-selected':clicked,'text-unselected':!clicked}">{{text_val}}</div>
+</div>

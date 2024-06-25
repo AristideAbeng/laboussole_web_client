@@ -1,0 +1,72 @@
+<app-nav-bar></app-nav-bar>
+    <div class="container">
+        <div class="title1">Contactez-nous</div>
+        <div class="text1">Une question ou une remarque ? Écrivez-nous un message !</div>
+
+        <div class="midContainer">
+            <div class="blueBox">
+                <div class="title2">Informations utiles</div>
+               
+                <img src="../../assets/bxs_phone-call-std.svg" alt="" style="width: 30px;height:30px;margin-bottom: 10px;margin-top: 10px;">
+                <div class="text2">+237 672435162 /+237 694216571</div>
+                <img src="../../assets/ic_sharp-email.svg" alt="" style="width: 30px; height:30px;margin-bottom: 10px;margin-top: 10px;">
+                <div class="text2">laboussolesangmelima</div>
+                <img src="../../assets/carbon_location-filled.svg" alt="" style="width: 30px; height:30px;margin-bottom: 10px;margin-top: 10px;">
+                <div class="text2">Sangmelima, Nkolguet</div>
+        
+                <div class="socialMedia"> 
+                    <a href=" https://www.facebook.com/profile.php?id=61550732631371&mibextid=LQQJ4d">
+                        <img src="../../assets/face book.svg"  alt="" style="width: 60px;height:50px;">
+                      </a>  
+                      <a href="https://www.youtube.com/@LABOUSSOLE-ic9mz">
+                        <img src="../../assets/youtub.svg"  alt="" style="width: 50px;height:50px;">
+                      </a>
+                      <a href="https://instagram.com/laboussole13?igshid=MjEwN2IyYWYwYw==">
+                        <img src="../../assets/instagram.svg"  alt="" style="width: 60px;height:50px;">
+                      </a>
+                      <a href="https://www.linkedin.com/company/laboussole13/">
+                        <img src="../../assets/linked-in-icon.svg"  alt="" style="width: 50px;height:50px;">
+                      </a>
+                </div>
+        
+            </div>
+        
+            <div class="form">
+                <mat-form-field>
+                    <mat-label>Nom</mat-label>
+                    <input matInput [(ngModel)]="nom">
+                </mat-form-field>
+        
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput [formControl]="emailControl"
+                    required>
+                </mat-form-field>
+        
+                <mat-form-field>
+                    <mat-label>Numéro téléphone</mat-label>
+                    <input matInput [(ngModel)]="telephone">
+                </mat-form-field>
+        
+                <mat-form-field>
+                    <mat-label>Message</mat-label>
+                    <textarea matInput requiered [formControl]="messageControl"></textarea>
+                </mat-form-field>
+                <button style="color:white;background-color:#0F70B7;" mat-raised-button (click)="envoyerMessage()">Envoyer  Message</button>
+            </div>
+        </div>
+    
+       
+    </div>
+    <app-footer></app-footer>
+
+    <ng-template #errorSheet>
+        <div class="sheetContent" style="color: #0F70B7;">
+          {{sheetErrorMessage}}
+           <br/><br/>
+           <button mat-raised-button (click)="closeBottomSheet()" *ngIf="!message_sent" style="background-color: red;color:white;">ok</button>
+           <button mat-raised-button (click)="closeBottomSheet()" *ngIf="message_sent" style="background-color: green;color:white;">ok</button>
+        </div>
+        
+      </ng-template>
+

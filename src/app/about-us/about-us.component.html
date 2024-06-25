@@ -1,0 +1,67 @@
+<app-nav-bar></app-nav-bar>
+    <div class="contentROP">
+        <div class="titleBlock">
+            <div class="title1"> <span style="font-weight: 900;">LABOUSSOLE</span>  en quelques mots</div>
+            <div class="text1">LABOUSSOLE a commencé à être développé en juin 2022 à L'Ecole Supérieur Internationale de Génie Numérique(ESIGN) de l'Université Inter-État CONGO-CAMEROUN(UIECC) basé à Sangmelima dans le cadre des projets intégrateurs et depuis janvier 2024 nous sommes une startup.</div>
+        </div>
+        <div class="blocks">
+            <div class="block1"> <img src="../../assets/1.png" alt=""></div>
+            <div class="block2">
+                <div class="text2">Notre mission : aider nos utilisateurs à réussir leurs insertions socio-professionnelles.</div>
+                    <div class="content">LABOUSSOLE est une application web intelligente d’aide à l’orientation académique et professionnelle et de formation en ligne dans les métiers du numérique qui permettra aux apprenants d’avoir une insertion socio-professionnelle réussie en ayant un emploi décent à la fin de leurs formations ou en s’autoemployant ou en entreprenant.</div>
+            </div>
+            <div class="block3"><img src="../../assets/2.png" alt=""></div>
+            <div class="block4">
+                <div class="text2">Notre vision : Permettre à chacun de trouver sa voie et de s'épanouir dans sa carrière.
+                </div>
+                <div class="content">Nous voulons créer un monde où l'accès à l'information et à la formation est ouvert à tous, sans distinction de genre, d'origine sociale ou de niveau de qualification, afin que tout le monde puisse trouver sa voie et s’épanouir dans sa carrière.</div>
+            </div>
+        </div>
+        <div class="title">Nous sommes une équipe jeune et dynamique pour vous servir !</div>
+        <div class="presentationEquipe">
+            <div class="profil">
+                <div class="title">Profil</div>
+                <div *ngIf="currentProfileNumber==0" class="textProfil">Je suis MBEYO’O NNA Wilfried, le C.E.O de LABOUSSOLE, et je suis par ailleurs élève ingénieur de génie numérique à l’École Supérieure Internationale de Génie Numérique de l’Université Inter État Congo-Cameroun basé à Sangmelima..   </div>
+                <div *ngIf="currentProfileNumber==1" class="textProfil">Je suis NGOUABE Rudes, je travaille comme Data Architect pour LABOUSSOLE, et je suis par ailleurs élève ingénieur de génie numérique à l’École Supérieure Internationale de Génie Numérique de l’Université Inter État Congo-Cameroun basé à Sangmelima..  </div>
+                <div *ngIf="currentProfileNumber==2" class="textProfil">Je suis BILOA ABENG Aristide Paulin, à la tête de l'équipe technique de LABOUSSOLE, où j'assume les fonctions de Software Engineer. Parallèlement, je suis étudiant en ingénierie à l'École Supérieure Internationale de Génie Numérique de l’Université Inter État Congo-Cameroun, située à Sangmelima.  </div>
+                <div *ngIf="currentProfileNumber==3" class="textProfil">Je suis AWANI LANKISSA Ella, je travaille comme UX/UI Manager pour LABOUSSOLE, et je suis par ailleurs élève ingénieur de génie numérique à l’École Supérieure Internationale de Génie Numérique de l’Université Inter État Congo-Cameroun basé à Sangmelima.. </div>
+                <div *ngIf="currentProfileNumber==4" class="textProfil">Je suis MENDO Charles Aimé, je suis Data manager pour LABOUSSOLE et je suis par ailleurs élève ingénieur de génie numérique à l’École Supérieure Internationale de Génie Numérique de l’Université Inter État Congo-Cameroun basé à Sangmelima..  </div>
+                <div *ngIf="currentProfileNumber==5" class="textProfil">Je suis IKAMA Méthode merlin Yowan je travaille comme community manager pour LABOUSSOLE, et je suis par ailleurs élève ingénieur de génie numérique à l’École Supérieure Internationale de Génie Numérique de l’Université Inter État Congo-Cameroun basé à Sangmelima..             </div>
+                <div *ngIf="currentProfileNumber==6" class="textProfil">Je suis NDONGA Isept Danielle je travaille comme développeur web front end pour LABOUSSOLE, et je suis par ailleurs élève ingénieur de génie numérique à l’École Supérieure Internationale de Génie Numérique de l’Université Inter État Congo-Cameroun basé à Sangmelima..            </div>
+                <div *ngIf="currentProfileNumber==7" class="textProfil">Je suis MOUABO OYONO Danielle Jacquy je travaille comme créatrice de contenu pour LABOUSSOLE, et je suis par ailleurs élève ingénieur de génie numérique à l’École Supérieure Internationale de Génie Numérique de l’Université Inter État Congo-Cameroun basé à Sangmelima..      </div>
+                <div *ngIf="currentProfileNumber==8" class="textProfil">Je suis ZE MINLA’A Mexin Robertson je travaille comme Data Analyst  pour LABOUSSOLE, et je suis par ailleurs élève ingénieur de génie numérique à l’École Supérieure Internationale de Génie Numérique de l’Université Inter État Congo-Cameroun basé à Sangmelima..</div>
+            </div>
+            <div class="caroussel-profils">
+                <div class="temoignagesSlider">
+                    <span class="leftArrowIcon">
+                      <button  (click)="prevImage()" mat-mini-fab style="background-color: #00a4e4;" aria-label="Example icon button with a filter list icon">
+                        <mat-icon>chevron_left</mat-icon>
+                      </button>
+                    </span>
+                    <span class="temoignageBox">
+                      <img *ngIf="currentProfileNumber==0" src="../../assets/profiles/10.png" alt="">
+                      <img *ngIf="currentProfileNumber==1" src="../../assets/profiles/6.png" alt="">
+                      <img *ngIf="currentProfileNumber==2" src="../../assets/profiles/paul.png" alt="">
+                      <img *ngIf="currentProfileNumber==3" src="../../assets/profiles/2.png" alt="">
+                      <img *ngIf="currentProfileNumber==4" src="../../assets/profiles/8.png" alt="">
+                      <img *ngIf="currentProfileNumber==5" src="../../assets/profiles/5.png" alt="">
+                      <img *ngIf="currentProfileNumber==6" src="../../assets/profiles/3.png" alt="">
+                      <img *ngIf="currentProfileNumber==7" src="../../assets/profiles/9.png" alt="">
+                      <img *ngIf="currentProfileNumber==8" src="../../assets/profiles/7.png" alt="">
+                    </span>
+                    <span class="rightArrowIcon">
+                      <button  (click)="nextImage()" mat-mini-fab style="background-color: #00a4e4;" aria-label="Example icon button with a filter list icon">
+                        <mat-icon>chevron_right</mat-icon>
+                      </button>
+                    </span>
+                  </div>
+            </div>
+
+        </div>
+    </div>
+    
+   
+    <app-footer></app-footer>
+
+
+

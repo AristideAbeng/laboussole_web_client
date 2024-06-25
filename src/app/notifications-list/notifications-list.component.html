@@ -1,0 +1,12 @@
+<div class="container">
+    <app-notification-template
+    *ngFor="let notification of allNotifications"
+    [notification]="notification"
+    (click)="viewNotification(notification.id_notification)"
+    >
+
+    </app-notification-template>
+</div>
+<div class="empty" *ngIf="allNotifications.length == 0">
+    Aucune Notification
+</div>

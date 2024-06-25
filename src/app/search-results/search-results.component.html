@@ -1,0 +1,41 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+    <div style="display: flex;justify-content:center;align-items:center;width: 100%;">
+        <mat-progress-spinner
+    *ngIf="showSpinner"
+    class="example-margin"
+    [color]="color"
+    [mode]="mode"
+    [value]="value">
+  </mat-progress-spinner>
+    </div>
+    
+    <div *ngIf="resultatsEcoles.length > 0" class="label">Écoles/Facultés</div>
+    <div class="ecoles" *ngIf="resultatsEcoles.length >0">
+        <app-filiere-formation-box
+        *ngFor="let ecole of resultatsEcoles; index as i"
+        [formationBox]="ecole" 
+        (click)="navigateToDetailsEcole(ecole.faculte_id)">
+        </app-filiere-formation-box>
+    </div>
+    <div class="label" *ngIf="resultatsMetiers.length > 0">Métiers</div>
+    <div class="metiers" *ngIf="resultatsMetiers.length > 0">
+        <app-offre-formation-box
+            *ngFor="let metier of resultatsMetiers; index as i"
+            [metierBox]="metier" 
+            (click)="navigateToDetailsMetier(metier.id_metiers)">
+        </app-offre-formation-box>
+    </div>
+    <div class="label" *ngIf="resultatsUniversites.length > 0">Universités</div>
+    <div class="universites" *ngIf="resultatsUniversites.length > 0">
+        <app-filiere-formation-box
+        *ngFor="let universite of resultatsUniversites; index as i"
+        [formationBox]="universite" 
+        (click)="navigateToDetailsUniversite(universite.universite_id)">
+        </app-filiere-formation-box>
+    </div>
+    
+    <div class="errorBox" *ngIf="resultatsEcoles.length==0 && resultatsMetiers.length==0 && resultatsUniversites.length==0 && !showSpinner">
+       Oops! Aucun resultat pour la recherche {{query}}
+    </div>
+</div>

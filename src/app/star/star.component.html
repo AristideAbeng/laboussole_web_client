@@ -1,0 +1,13 @@
+<div *ngIf="showFullStar; then FullStarBlock else checkHalfStarBlock"></div>
+<ng-template #checkHalfStarBlock>
+  <div *ngIf="showHalfStar; then HalfStarBlock else EmptyStarBlock"></div>
+</ng-template>
+<ng-template #FullStarBlock>
+  <img src="../../assets/yellow-full-star-removebg-preview.png" alt="" style="width: 25px; height:25px">
+</ng-template>
+<ng-template #HalfStarBlock>
+    <img src="../../assets/half-full-icon-removebg-preview.png" alt="" style="width: 25px; height:25px">
+</ng-template>
+<ng-template #EmptyStarBlock>
+    <img src="../../assets/empty-star-icon-removebg-preview.png" alt="" style="width: 25px; height:25px">
+</ng-template>

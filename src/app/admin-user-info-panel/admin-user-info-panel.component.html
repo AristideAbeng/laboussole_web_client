@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="navigation">
+        <div class="PersonalInfo nav-item" (click)="changePanel(1)"> <img class="nav-image" src="/laboussole_client_web/assets/icons8-group-64.png" alt=""> Personal Information</div>
+        <div class="Activites nav-item" (click)="changePanel(2)"> <img class="nav-image" src="/laboussole_client_web/assets/icons8-group-64.png" alt=""> Activites </div>
+    </div>
+    <div class="content">
+        
+        <app-user-personal-info-panel [selectedUser]="selectedUser" *ngIf="showUserPersonalInfo"></app-user-personal-info-panel>
+        <app-user-activity-panel *ngIf="showUserActivity"></app-user-activity-panel>
+    </div>
+</div>

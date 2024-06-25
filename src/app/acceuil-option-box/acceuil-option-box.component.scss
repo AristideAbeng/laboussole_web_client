@@ -1,0 +1,54 @@
+.rounded-box {
+    width: 300px;
+    height: 250px;
+    background-color: white; /* Blue color, you can change this */
+    border-radius: 10px; /* Adjust the border-radius for slightly rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+    margin: 20px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    
+  }
+
+  .rounded-box:hover{
+    box-shadow: 0 4px 8px rgba(2, 25, 39, 0.418); /* Subtle box shadow */
+  }
+
+  .description{
+    padding: 20px;
+    text-align: center;
+    color: #696984;
+    font-weight: 600;
+  }
+
+  .title{
+    margin-bottom: 20px;
+    color:#0F70B7;
+    font-size: large;
+    font-weight: 700;
+  }
+  .imageIcon{
+    position: relative;
+    bottom:310px;
+    border-radius: 50%;
+   
+  }
+  .container{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+  @media screen and (min-height: 400px){
+    .imageIcon{
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+  }
+  
