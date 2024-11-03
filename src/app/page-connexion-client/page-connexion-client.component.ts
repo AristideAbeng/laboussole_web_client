@@ -53,6 +53,12 @@ export class PageConnexionClientComponent {
         localStorage.setItem("access_token",data.access)
         // console.log("valid login");
          this.userService.user_email = this.email.trim();
+         this.userService.getUserByMail(this.userService.user_email).subscribe(
+          (data:any)=>{
+            console.log(data.id);
+            localStorage.setItem('user_id',data.id)
+          }
+         )
         // console.log(this.email)
         // console.log(this.emailControl.value)
          localStorage.setItem('user_email', this.email.trim()); // Saving user email in local storage
