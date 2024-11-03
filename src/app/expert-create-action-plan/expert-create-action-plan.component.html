@@ -1,9 +1,18 @@
-<div class="mobileContainer">
+<div class="mobileContainer" *ngIf="!showPlanDetails">
     <button style="background-color:#0761B9;color:white;" mat-raised-button *ngIf="!show_form" (click)="showForm()" >Creer un nouveau plan d'Action</button>
     <button style="background-color:red;color:white;" *ngIf="show_form" mat-raised-button (click)="hideForm()">annuler</button>
     <div class="historique" *ngIf="!show_form">
         <h1>Historique</h1>
-        <app-expert-plan-list-template *ngFor="let plan of plan_action" [plan_action]="plan" ></app-expert-plan-list-template>
+        <app-expert-plan-list-template *ngFor="let plan of plan_action" (onActionPlanclicked)="reactToActionPlanClicked($event)" [plan_action]="plan" ></app-expert-plan-list-template>
     </div>
     <app-expert-action-plan-form (onActionPlanSent)="receiveActionPlan($event)" *ngIf="show_form" ></app-expert-action-plan-form>
+</div>
+<div *ngIf="showPlanDetails">
+    <div class="buttons"><button mat-mini-fab (click)="showPlanDetails=!showPlanDetails" style="background-color:#0761B9;">
+        <mat-icon>arrow_back_ios</mat-icon>
+      </button>
+      
+    </div>
+    
+      <app-expert-update-action-plan  [action_plan]="receivedPlan" ></app-expert-update-action-plan>
 </div>

@@ -8,5 +8,20 @@
     <div class="job-description">
        {{job_description}}
     </div>
-    <button *ngIf="has_plan" (click)="notifyToShowPlan()" style="background-color: #0761B9;color:white;" mat-raised-button>Voir le plan d'action</button>
-    <button *ngIf="!has_plan" (click)="notifyToShowPlan()" style="background-color: #0761B9;color:white;" mat-raised-button>defnir un plan d'action</button>
+    <button *ngIf="has_plan && !has_many_plans" (click)="notifyToShowPlan()" style="background-color: #0761B9;color:white;" mat-raised-button>Voir le plan d'action</button>
+    <div>
+        <mat-expansion-panel  *ngIf="has_many_plans" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span style="color:#0761B9;font-weight:600;text-align:center">
+                Afficher les plans d'action
+              </span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <button  *ngFor="let item of actionPlanEntries" (click)="notifyToShowSpecificPlan(item[0])" mat-flat-button style="color:#0761B9;">
+            View Action plan From Expert: {{ item[0] }}
+          </button>
+        </mat-expansion-panel>
+      </div>
+    
+    <button *ngIf="!has_plan" (click)="goToConsulterExpert()" style="background-color: #0761B9;color:white;" mat-raised-button>defnir un plan d'action</button>

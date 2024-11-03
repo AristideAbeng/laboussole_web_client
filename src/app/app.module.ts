@@ -157,6 +157,7 @@ import { ExpertCreateActionPlanComponent } from './expert-create-action-plan/exp
 import { ExpertPlanListTemplateComponent } from './expert-plan-list-template/expert-plan-list-template.component';
 import { ExpertActionPlanFormComponent } from './expert-action-plan-form/expert-action-plan-form.component';
 import { RedigerNotificationsComponent } from './rediger-notifications/rediger-notifications.component';
+import { ExpertUpdateActionPlanComponent } from './expert-update-action-plan/expert-update-action-plan.component';
 
 
 
@@ -262,7 +263,8 @@ import { RedigerNotificationsComponent } from './rediger-notifications/rediger-n
     ExpertCreateActionPlanComponent,
     ExpertPlanListTemplateComponent,
     ExpertActionPlanFormComponent,
-    RedigerNotificationsComponent
+    RedigerNotificationsComponent,
+    ExpertUpdateActionPlanComponent
   ],
   imports: [
     CommonModule,

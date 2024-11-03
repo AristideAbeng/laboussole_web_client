@@ -10,3 +10,10 @@ h1{
     display: flex;
     flex-flow: column;
 }
+.buttons{
+    display: flex;
+    width: 100%;
+    flex-flow: row wrap;
+    justify-content: space-around;
+
+}

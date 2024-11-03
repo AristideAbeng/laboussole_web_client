@@ -10,6 +10,9 @@ import { Observable,take } from 'rxjs';
 export class ExpertCreateActionPlanComponent {
 
   show_form:boolean = false;
+  showPlanDetails:boolean= false;
+  receivedPlan:any;
+  plan_action:any[] =[]
 
   constructor(private firestore: Firestore){
     
@@ -24,8 +27,11 @@ export class ExpertCreateActionPlanComponent {
         if (Array.isArray(data)) {
           this.plan_action.push(...data);
         } else {
-          this.plan_action.push(data)
-          console.error("Data is not an array:", data);
+          if(data){
+            this.plan_action.push(data)
+            console.error("Data is not an array:", data);
+          }
+          
         }
       }
     ).catch((error) => {
@@ -33,9 +39,7 @@ export class ExpertCreateActionPlanComponent {
     });
   }
 
-  plan_action:any[] =[ 
-   
-  ]
+
   showForm(){
     this.show_form=true;
   }
@@ -50,18 +54,29 @@ export class ExpertCreateActionPlanComponent {
 
   async getExpertObjectiveByUserId(userId: any) {
     try {
-      // Reference the 'user_objectives' collection
+      // Reference the 'expert_action_plans' collection
       const userObjectivesRef = collection(this.firestore, 'expert_action_plans');
-
-      // Create a query to fetch the document where user_id matches the specified value
+  
+      // Create a query to fetch the documents where expert_id matches the specified value
       const q = query(userObjectivesRef, where('expert_id', '==', userId));
-
+  
       // Execute the query and get the documents
       const querySnapshot = await getDocs(q);
-
-      // Check if we have documents and return the first match
+  
+      // Check if we have documents and return all matches
       if (!querySnapshot.empty) {
-        return querySnapshot.docs[0].data(); // Returns the document data
+        console.log("Logging docs from Firebase for expert:");
+        console.log(querySnapshot);
+  
+        let res = [];
+        for (let doc of querySnapshot.docs) {
+          
+          res.push({
+            id: doc.id, // Document ID
+            ...doc.data() // Document data
+          });
+        }
+        return res;
       } else {
         console.log('No matching documents found');
         return null;
@@ -70,5 +85,14 @@ export class ExpertCreateActionPlanComponent {
       console.error('Error fetching user objective: ', error);
       return null;
     }
+  }
+  
+  
+
+  reactToActionPlanClicked(e:any){
+    console.log("received plan")
+    console.log(e)
+    this.showPlanDetails=true
+    this.receivedPlan = e;
   }
 }

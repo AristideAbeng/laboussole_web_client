@@ -4,7 +4,10 @@
         [has_plan]="current_objective.action_plan.length"
         [job_title]="current_objective.job_title"
         [job_description]="current_objective.job_description"
-        *ngIf="is_objective_set" (showPlan)="showActionPlan($event)"></app-objectif-box>
+        *ngIf="is_objective_set" (showPlan)="showActionPlan($event)"
+        (showSpecificPlan)="showSpecificPlan($event)"
+        [action_plans]="current_objective.action_plan"
+        ></app-objectif-box>
         <app-objectif-placeholder *ngIf="!is_objective_set"></app-objectif-placeholder>
          </mat-tab>
     <mat-tab label="Objectifs Atteints"> 

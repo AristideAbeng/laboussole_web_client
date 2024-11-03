@@ -54,8 +54,8 @@ export class ExpertActionPlanFormComponent {
     let duree_total:number = 0;
     let cout_total:number=0;
     for(let step of this.action_plan_steps){
-      duree_total = (step.duration as number) + duree_total;
-      cout_total = (step.cost as number) + cout_total; 
+      duree_total = Number(step.duration) + duree_total;
+      cout_total = Number(step.cost) + cout_total; 
     }
     let id:number =  Number(localStorage.getItem('user_id'));
     let plan = {
@@ -63,15 +63,18 @@ export class ExpertActionPlanFormComponent {
       objective:this.firstFormGroup.get('client_objective')?.value,
       duree_total:duree_total,
       investissement_total:cout_total,
-      actions:this.action_plan_steps
+      created_at: new Date() ,
+      actions:this.action_plan_steps,
+      expert:id
     }
     let expert_plan = {
       client:this.firstFormGroup.get('client_email')?.value,
       objective:this.firstFormGroup.get('client_objective')?.value,
       duree_total:duree_total,
       investissement_total:cout_total,
+      created_at: new Date(),
       actions:this.action_plan_steps,
-      expert_id:id
+      expert_id:String(id)
     }
     console.log(plan)
     this.insertExpertObjective(expert_plan).then(

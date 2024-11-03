@@ -157,10 +157,28 @@ export class MonObjectifComponent {
         }
       });
 
+    }else{
+      this.getUserObjectiveByUserId(id).then(objective => {
+        if(objective){
+          this.is_objective_set=true;
+          console.log(objective);
+          this.current_objective=objective;
+        }else{
+          this.is_objective_set=false;
+          localStorage.setItem('is_objective_set','false')
+        }
+        
+      }).catch(error => {
+        console.log(error)
+      })
     }
   }
 
   showActionPlan(e:any){
+    this.show_action_plan=true;
+    this.action_object=e;
+  }
+  showSpecificPlan(e:any){
     this.show_action_plan=true;
     this.action_object=e;
   }

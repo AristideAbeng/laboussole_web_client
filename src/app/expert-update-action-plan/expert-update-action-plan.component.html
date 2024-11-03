@@ -1,0 +1,33 @@
+
+
+<div class="action_step" *ngFor="let step of action_plan.actions; let i = index">
+    <h1>Etape {{i+1}}</h1>
+    <mat-form-field>
+        <mat-label>Titre de l'etape</mat-label>
+        <input matInput [value]="step.title"
+               required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput [value]="step.description"
+             required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Duree</mat-label>
+        <input matInput [value]="step.duration"
+             required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Ressources</mat-label>
+        <input matInput [value]="step.ressources"
+             required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label> Cout des Ressources </mat-label>
+        <input matInput [value]="step.cost"
+             required>
+      </mat-form-field>
+</div>
+
+ 
+
