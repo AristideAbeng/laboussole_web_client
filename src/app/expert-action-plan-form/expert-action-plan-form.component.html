@@ -22,8 +22,8 @@
         <div class="steps_list" >
           <h1>Plan d'action</h1>
           <mat-accordion>
-            <mat-expansion-panel *ngFor="let step of action_plan_steps;let i = index">
-              <mat-expansion-panel-header>
+            <mat-expansion-panel style="height: fit-content;" *ngFor="let step of action_plan_steps;let i = index">
+              <mat-expansion-panel-header style="height: fit-content;">
                 <mat-panel-title> {{i+1}}. {{step.title}} </mat-panel-title>
                 <mat-panel-description> <span style="display: flex;flex-flow:row nowrap;justify-content:space-evenly;width:100%"><b>duree:</b> {{step.duration}}    <b>cout:</b> {{step.cost}}</span>  </mat-panel-description>
               </mat-expansion-panel-header>
