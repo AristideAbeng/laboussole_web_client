@@ -158,6 +158,7 @@ import { ExpertPlanListTemplateComponent } from './expert-plan-list-template/exp
 import { ExpertActionPlanFormComponent } from './expert-action-plan-form/expert-action-plan-form.component';
 import { RedigerNotificationsComponent } from './rediger-notifications/rediger-notifications.component';
 import { ExpertUpdateActionPlanComponent } from './expert-update-action-plan/expert-update-action-plan.component';
+import { ChatExpertComponent } from './chat-expert/chat-expert.component';
 
 
 
@@ -264,7 +265,8 @@ import { ExpertUpdateActionPlanComponent } from './expert-update-action-plan/exp
     ExpertPlanListTemplateComponent,
     ExpertActionPlanFormComponent,
     RedigerNotificationsComponent,
-    ExpertUpdateActionPlanComponent
+    ExpertUpdateActionPlanComponent,
+    ChatExpertComponent
   ],
   imports: [
     CommonModule,
