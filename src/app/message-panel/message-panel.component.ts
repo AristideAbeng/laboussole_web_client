@@ -42,8 +42,9 @@ export class MessagePanelComponent {
     this.AllChatsLastMessage= [];
     this.displayedMessages = [];
     this.total_unread=0;
-
-    const participantId = 1; // Replace with the actual participant ID
+    let p_id:any = localStorage.getItem('expert_id');
+    p_id = Number(p_id)
+    const participantId =  p_id// Replace with the actual participant ID
     this.getGroupChatsByParticipant(participantId).subscribe((groupChats: any) => {
       this.groupChatsLastMessage = [];
       console.log('****************Group Chats**************************')
@@ -114,16 +115,19 @@ export class MessagePanelComponent {
       console.log('****************Private Chats**************************')
       this.privateChats = privateChats;
       let standardisedChats:Array<any> = [];
-      let user_id:any = localStorage.getItem('user_id');
-      console.log("user id is ",user_id);
+      let expert_id:any = localStorage.getItem('expert_id');
+      console.log("expert id is ",expert_id);
       for(let pc of this.privateChats){
         this.chatsMap.set(pc.id,pc);
-       
         let standChat:any;
         let membs = pc.Membres;
         let recipient_id:any;
-        if(membs[0]==user_id){
+        console.log("membs 0 is "+membs[0])
+        if(membs[0]==expert_id){
           recipient_id = membs[1];
+          console.log("recipient id is ",recipient_id)
+        }else if(membs[1]==expert_id){
+          recipient_id = membs[0];
           console.log("recipient id is ",recipient_id)
         }
         console.log(membs);
@@ -215,7 +219,6 @@ if (!existingChat) {
   }
 
 
-
   getGroupChatsByParticipant(participantId: number): Observable<any[]> {
     const groupChatsRef = collection(this.firestore, 'groupChats');
     const q = query(
@@ -233,6 +236,18 @@ if (!existingChat) {
       where('Membres', 'array-contains', participantId),
       orderBy('last_message_date_sent', 'desc') // Adds ordering by last_message_date_sent in descending order
     );
+    return collectionData(q, { idField: 'id' });
+  }
+  getPrivateChatsFor2ParticipantsOrCreate(participantId1: number, participantId2: number): Observable<any[]> {
+    const privateChatsRef = collection(this.firestore, 'privateChats');
+    
+    const q = query(
+      privateChatsRef,
+      where('Membres', 'array-contains', participantId1),  // Check for participantId1
+      where('Membres', 'array-contains', participantId2),  // Check for participantId2
+      orderBy('last_message_date_sent', 'desc')           // Order by 'last_message_date_sent' in descending order
+    );
+  
     return collectionData(q, { idField: 'id' });
   }
   filterUnreadMessages(allLastMessageArray: any[]): any[] {

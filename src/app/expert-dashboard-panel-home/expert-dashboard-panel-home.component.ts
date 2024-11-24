@@ -55,7 +55,9 @@ export class ExpertDashboardPanelHomeComponent {
         }
       )
 
-      const participantId = 1; // Replace with the actual participant ID
+      let p_id:any = localStorage.getItem('expert_id');
+    p_id = Number(p_id)
+    const participantId =  p_id // Replace with the actual participant ID
       this.getGroupChatsByParticipant(participantId).subscribe((groupChats: any) => {
         console.log('****************Group Chats**************************')
         this.groupChats=groupChats;

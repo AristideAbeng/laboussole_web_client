@@ -65,7 +65,7 @@ const routes: Routes = [
   {path:'expert-login',component:ExpertLoginComponent},
   {path:'consulter-expert',component:ViewExpertListComponent},
   {path:'edit-notification',component:RedigerNotificationsComponent},
-  {path:'chat-expert',component:ChatExpertComponent}
+  {path:'chat-expert/:expert_id',component:ChatExpertComponent}
 ];
 
 @NgModule({

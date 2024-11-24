@@ -1,7 +1,7 @@
 
 
 
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output,OnChanges, SimpleChanges  } from '@angular/core';
 import { ChatMessagesService } from '../services/chat-messages.service';
 import { UserServiceService } from '../services/user-service.service';
 import { Firestore, doc, updateDoc, arrayUnion } from '@angular/fire/firestore';
@@ -20,6 +20,10 @@ import { finalize } from 'rxjs/operators';
 })
 export class ExpertMessageContentChatComponent {
 
+  @Input() chat_id:any;
+  @Input() input_chat_details:any;
+  @Input() privateChatName:any;
+
   downloadURL: string | null = null;
 
   messages:Array<any> = [];
@@ -30,6 +34,7 @@ export class ExpertMessageContentChatComponent {
 
 
   @Output() backToMessageList = new EventEmitter<string>();
+
   isGroupChat:boolean=false;
 
 
@@ -49,97 +54,201 @@ export class ExpertMessageContentChatComponent {
     private firestore: Firestore,private storage: Storage){
       
   }
+  
 
 
-  ngOnInit(){
-    this.chatDetails = this.chatMessage.messages;
-    if(this.chatDetails.Participants){
-      this.isGroupChat=true;
-    }
-    if(this.chatDetails.Nom){
-      this.title = this.chatDetails.Nom
-    }else{
-      let user_id:any = localStorage.getItem('user_id');
-      let membs = this.chatDetails.Membres;
-          let recipient_id:any;
-          if(membs[0]==user_id){
-            
-            recipient_id = membs[1];
-            console.log("recipient id is ",recipient_id)
-          }else{
-            recipient_id=membs[0];
-          }
-          this.userService.getUserNameById(recipient_id).subscribe((name:any)=> {
-           this.title = name.username;
-          },
-          (error: any)=>{
-            console.error(error);
-          }
-          )
-    }
-    this.messages = this.chatMessage.messages.message_list;
-    let last_message = this.messages[this.messages.length-1];
-    console.log("**** message_list *************",this.messages)
-    console.log("last group message id is",this.chatMessage.chatId);
-
-    const milliseconds = last_message.date_sent.seconds * 1000 + last_message.date_sent.nanoseconds / 1e6;
-    // Create Date object
-    const date = new Date(milliseconds);
-
-    const dateString = date.toISOString();
-
-    // Step 2: Save the string in localStorage
-    localStorage.setItem(this.chatMessage.messages.id, dateString);
-    for(let message of this.messages){
-      let txt:string = message.content;
-      const milliseconds = message.date_sent.seconds * 1000 + message.date_sent.nanoseconds / 1e6;
-      // Create Date object
-      const dt = new Date(milliseconds);
-      let  timestamp:Date = dt;
-
-      let user_id:any = localStorage.getItem('user_id');
-      let isSt:boolean=false;
-      let isImg:boolean=false;
-      let isDocument:boolean=false;
-      let isVideo:boolean=false;
-      let isAudio:boolean=false;
-
-      if(message.fileType.startsWith('image/')){
-        isImg=true;
-      }else if(message.fileType.startsWith('audio/')){
-        isAudio=true;
-      }else if(message.fileType.startsWith('video/')){
-        isVideo=true;
-      }else if(message.fileType != "null"){
-        isDocument=true;
-      }
-
-      if(message.sender){
-        isSt = user_id == message.sender;
-      }else{
-        isSt = user_id == message.sender_id;
-      }
-
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['input_chat_details']) {
+        this.chatDetails = this.input_chat_details;
+        console.log(this.chatDetails);
       
-      
-      this.standardizedMessages.push(
-        {
-          text:txt,
-          timestamp:timestamp,
-          isSent:isSt,
-          isImage:isImg,
-          imageUrl:message.fileUrl,
-          isAudio:isAudio,
-          audioUrl:message.fileUrl,
-          isVideo:isVideo,
-          videoUrl:message.fileUrl,
-          isDocument:isDocument,
-          documentUrl:message.fileUrl,
-          documentName:message.fileName
+        if(this.chatDetails.Participants){
+          this.isGroupChat=true;
         }
-      )
+        if(this.chatDetails.Nom){
+          this.title = this.chatDetails.Nom
+        }else{
+          let user_id:any = localStorage.getItem('user_id');
+          let membs = this.chatDetails.Membres;
+              let recipient_id:any;
+              if(membs[0]==user_id){
+                
+                recipient_id = membs[1];
+                console.log("recipient id is ",recipient_id)
+              }else{
+                recipient_id=membs[0];
+              }
+              this.userService.getUserNameById(recipient_id).subscribe((name:any)=> {
+               this.title = name.username;
+              },
+              (error: any)=>{
+                console.error(error);
+              }
+              )
+        }
+        this.messages = this.chatDetails.message_list;
+        let last_message = this.messages[this.messages.length-1];
+        console.log("**** message_list *************",this.messages)
+        console.log("last group message id is",this.chatMessage.chatId);
+    
+        const milliseconds = last_message.date_sent.seconds * 1000 + last_message.date_sent.nanoseconds / 1e6;
+        // Create Date object
+        const date = new Date(milliseconds);
+    
+        const dateString = date.toISOString();
+    
+        // Step 2: Save the string in localStorage
+        localStorage.setItem(this.chatDetails.id, dateString);
+        for(let message of this.messages){
+          let txt:string = message.content;
+          const milliseconds = message.date_sent.seconds * 1000 + message.date_sent.nanoseconds / 1e6;
+          // Create Date object
+          const dt = new Date(milliseconds);
+          let  timestamp:Date = dt;
+    
+          let user_id:any = localStorage.getItem('user_id');
+          let isSt:boolean=false;
+          let isImg:boolean=false;
+          let isDocument:boolean=false;
+          let isVideo:boolean=false;
+          let isAudio:boolean=false;
+    
+          if(message.fileType.startsWith('image/')){
+            isImg=true;
+          }else if(message.fileType.startsWith('audio/')){
+            isAudio=true;
+          }else if(message.fileType.startsWith('video/')){
+            isVideo=true;
+          }else if(message.fileType != "null"){
+            isDocument=true;
+          }
+    
+          if(message.sender){
+            isSt = user_id == message.sender;
+          }else{
+            isSt = user_id == message.sender_id;
+          }
+    
+          
+          
+          this.standardizedMessages.push(
+            {
+              text:txt,
+              timestamp:timestamp,
+              isSent:isSt,
+              isImage:isImg,
+              imageUrl:message.fileUrl,
+              isAudio:isAudio,
+              audioUrl:message.fileUrl,
+              isVideo:isVideo,
+              videoUrl:message.fileUrl,
+              isDocument:isDocument,
+              documentUrl:message.fileUrl,
+              documentName:message.fileName
+            }
+          )
+        }
+        console.log("all standardized messages  ",this.standardizedMessages)
+  
     }
-    console.log("all standardized messages  ",this.standardizedMessages)
+  }
+
+  ngOnInit(){ //make this method more adaptable.
+    this.chatDetails = this.chatMessage.messages;
+    console.log(this.chatDetails)
+    if(!this.chatDetails){
+      this.chatDetails = this.input_chat_details;
+      console.log(this.chatDetails);
+    }
+      if(this.chatDetails.Participants){
+        this.isGroupChat=true;
+      }
+      if(this.chatDetails.Nom){
+        this.title = this.chatDetails.Nom
+      }else{
+        let user_id:any = localStorage.getItem('user_id');
+        let membs = this.chatDetails.Membres;
+            let recipient_id:any;
+            if(membs[0]==user_id){
+              
+              recipient_id = membs[1];
+              console.log("recipient id is ",recipient_id)
+            }else{
+              recipient_id=membs[0];
+            }
+            this.userService.getUserNameById(recipient_id).subscribe((name:any)=> {
+             this.title = name.username;
+            },
+            (error: any)=>{
+              console.error(error);
+            }
+            )
+      }
+      this.messages = this.chatDetails.message_list;
+      let last_message = this.messages[this.messages.length-1];
+      console.log("**** message_list *************",this.messages)
+      console.log("last group message id is",this.chatMessage.chatId);
+  
+      const milliseconds = last_message.date_sent.seconds * 1000 + last_message.date_sent.nanoseconds / 1e6;
+      // Create Date object
+      const date = new Date(milliseconds);
+  
+      const dateString = date.toISOString();
+  
+      // Step 2: Save the string in localStorage
+      localStorage.setItem(this.chatMessage.messages.id, dateString);
+      for(let message of this.messages){
+        let txt:string = message.content;
+        const milliseconds = message.date_sent.seconds * 1000 + message.date_sent.nanoseconds / 1e6;
+        // Create Date object
+        const dt = new Date(milliseconds);
+        let  timestamp:Date = dt;
+  
+        let user_id:any = localStorage.getItem('user_id');
+        let isSt:boolean=false;
+        let isImg:boolean=false;
+        let isDocument:boolean=false;
+        let isVideo:boolean=false;
+        let isAudio:boolean=false;
+  
+        if(message.fileType.startsWith('image/')){
+          isImg=true;
+        }else if(message.fileType.startsWith('audio/')){
+          isAudio=true;
+        }else if(message.fileType.startsWith('video/')){
+          isVideo=true;
+        }else if(message.fileType != "null"){
+          isDocument=true;
+        }
+  
+        if(message.sender){
+          isSt = user_id == message.sender;
+        }else{
+          isSt = user_id == message.sender_id;
+        }
+  
+        
+        
+        this.standardizedMessages.push(
+          {
+            text:txt,
+            timestamp:timestamp,
+            isSent:isSt,
+            isImage:isImg,
+            imageUrl:message.fileUrl,
+            isAudio:isAudio,
+            audioUrl:message.fileUrl,
+            isVideo:isVideo,
+            videoUrl:message.fileUrl,
+            isDocument:isDocument,
+            documentUrl:message.fileUrl,
+            documentName:message.fileName
+          }
+        )
+      }
+      console.log("all standardized messages  ",this.standardizedMessages)
+
+    
   }
 
 
@@ -163,12 +272,12 @@ export class ExpertMessageContentChatComponent {
         documentName:documentName
        });
       if(this.isGroupChat){
-        this.sendGroupMessage(this.chatMessage.messages.id,this.newMessage,user_id,fileUrl,fileType,fileName)
+        this.sendGroupMessage(this.chatDetails.id,this.newMessage,user_id,fileUrl,fileType,fileName)
       }else{
-        this.sendPrivateMessage(this.chatMessage.messages.id,this.newMessage,user_id,fileUrl,fileType,fileName)
+        this.sendPrivateMessage(this.chatDetails.id,this.newMessage,user_id,fileUrl,fileType,fileName)
       }
       
-      console.log(this.chatMessage.messages.id)
+      console.log(this.chatDetails.id)
       this.newMessage = '';
 
     }
