@@ -6,6 +6,7 @@ import { ChatMessagesService } from '../services/chat-messages.service';
 import { UserServiceService } from '../services/user-service.service';
 import { Firestore, doc, updateDoc, arrayUnion } from '@angular/fire/firestore';
 import { Timestamp } from 'firebase/firestore'; // Firebase Timestamp
+import { onSnapshot } from "firebase/firestore";
 import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
 
 
@@ -38,7 +39,7 @@ export class ExpertMessageContentChatComponent {
   isGroupChat:boolean=false;
 
 
-
+  unsubscribe:any;
   chatDetails:any;
   standardizedMessages:Array<any> = new Array();
   title:string="";
@@ -54,8 +55,9 @@ export class ExpertMessageContentChatComponent {
     private firestore: Firestore,private storage: Storage){
       
   }
-  
 
+  
+  
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['input_chat_details']) {
@@ -151,9 +153,121 @@ export class ExpertMessageContentChatComponent {
         console.log("all standardized messages  ",this.standardizedMessages)
   
     }
+    if(changes['chat_id']){
+      if (this.unsubscribe) {
+        this.unsubscribe(); // Unsubscribe from previous listener
+    }
+      const chatDocRef = doc(this.firestore, `privateChats/${this.chat_id}`);
+
+      console.log("chat id has changed")
+      console.log(this.chat_id)
+  // Start listening to changes on the document
+  this.unsubscribe = onSnapshot(chatDocRef, (doc:any) => {
+    console.log("snapshot was triggered")
+  if (doc.exists()) {
+    console.log('Current document data:', doc.data());
+    this.chatDetails = doc.data();
+        console.log(this.chatDetails);
+      
+        if(this.chatDetails.Participants){
+          this.isGroupChat=true;
+        }
+        if(this.chatDetails.Nom){
+          this.title = this.chatDetails.Nom
+        }else{
+          let user_id:any = localStorage.getItem('user_id');
+          let membs = this.chatDetails.Membres;
+              let recipient_id:any;
+              if(membs[0]==user_id){
+                
+                recipient_id = membs[1];
+                console.log("recipient id is ",recipient_id)
+              }else{
+                recipient_id=membs[0];
+              }
+              this.userService.getUserNameById(recipient_id).subscribe((name:any)=> {
+               this.title = name.username;
+              },
+              (error: any)=>{
+                console.error(error);
+              }
+              )
+        }
+        this.messages = this.chatDetails.message_list;
+        let last_message = this.messages[this.messages.length-1];
+        console.log("**** message_list *************",this.messages)
+        console.log("last group message id is",this.chatMessage.chatId);
+    
+        const milliseconds = last_message.date_sent.seconds * 1000 + last_message.date_sent.nanoseconds / 1e6;
+        // Create Date object
+        const date = new Date(milliseconds);
+    
+        const dateString = date.toISOString();
+    
+        // Step 2: Save the string in localStorage
+        localStorage.setItem(this.chatDetails.id, dateString);
+        for(let message of this.messages){
+          let txt:string = message.content;
+          const milliseconds = message.date_sent.seconds * 1000 + message.date_sent.nanoseconds / 1e6;
+          // Create Date object
+          const dt = new Date(milliseconds);
+          let  timestamp:Date = dt;
+    
+          let user_id:any = localStorage.getItem('user_id');
+          let isSt:boolean=false;
+          let isImg:boolean=false;
+          let isDocument:boolean=false;
+          let isVideo:boolean=false;
+          let isAudio:boolean=false;
+    
+          if(message.fileType.startsWith('image/')){
+            isImg=true;
+          }else if(message.fileType.startsWith('audio/')){
+            isAudio=true;
+          }else if(message.fileType.startsWith('video/')){
+            isVideo=true;
+          }else if(message.fileType != "null"){
+            isDocument=true;
+          }
+    
+          if(message.sender){
+            isSt = user_id == message.sender;
+          }else{
+            isSt = user_id == message.sender_id;
+          }
+    
+          
+          
+          this.standardizedMessages.push(
+            {
+              text:txt,
+              timestamp:timestamp,
+              isSent:isSt,
+              isImage:isImg,
+              imageUrl:message.fileUrl,
+              isAudio:isAudio,
+              audioUrl:message.fileUrl,
+              isVideo:isVideo,
+              videoUrl:message.fileUrl,
+              isDocument:isDocument,
+              documentUrl:message.fileUrl,
+              documentName:message.fileName
+            }
+          )
+        }
+        console.log("all standardized messages  ",this.standardizedMessages)
+  
+  } else {
+    console.log('Document does not exist!');
+  }
+  }, (error) => {
+    console.error('Error observing document: ', error);
+  });
+    }
   }
 
-  ngOnInit(){ //make this method more adaptable.
+  ngOnInit(){ 
+
     this.chatDetails = this.chatMessage.messages;
     console.log(this.chatDetails)
     if(!this.chatDetails){
@@ -476,6 +590,12 @@ resetAudioRecording() {
     this.isRecording = false;
     // Optionally, you might want to stop any ongoing recording process here
   }
+
+  ngOnDestroy() {
+    if (this.unsubscribe) {
+        this.unsubscribe();
+    }
+}
 
 
 }

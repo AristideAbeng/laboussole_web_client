@@ -25,6 +25,8 @@ export class MessagePanelComponent {
   total_unread:number=0;
   iterable_map = new Map<string,any>();
 
+  chat_id:any;
+
   private chatsMap = new Map<string,any>();
  
 
@@ -211,7 +213,7 @@ if (!existingChat) {
   }
 
   enterDiscussion(e:any){
-   
+    this.chat_id=e;
     this.enter_discussion = true;
     console.log(e);
     let chat:any = this.chatsMap.get(e);

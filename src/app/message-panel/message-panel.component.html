@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="chat" *ngIf="enter_discussion || this.chatMessage.enterChat">
-    <app-expert-message-content-chat (backToMessageList)="backToList($event)"></app-expert-message-content-chat>
+    <app-expert-message-content-chat [chat_id]="chat_id" (backToMessageList)="backToList($event)"></app-expert-message-content-chat>
   </div>
           
 </div>
