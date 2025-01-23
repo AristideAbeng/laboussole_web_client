@@ -191,6 +191,7 @@ export class PageAcceuilSansCompteComponent {
     }else{
       launch = true;
     }
+    launch = false;
     
     if(launch){
       this.timeoutId = setTimeout(() => {
